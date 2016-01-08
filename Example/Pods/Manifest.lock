@@ -1,0 +1,14 @@
+PODS:
+  - AdyenCheckout (0.1.0)
+
+DEPENDENCIES:
+  - AdyenCheckout (from `../`)
+
+EXTERNAL SOURCES:
+  AdyenCheckout:
+    :path: ../
+
+SPEC CHECKSUMS:
+  AdyenCheckout: cf13617aa6a8c7e2c442328e4002cabac5c5fc25
+
+COCOAPODS: 0.39.0

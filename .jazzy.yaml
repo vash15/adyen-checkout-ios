@@ -1,0 +1,44 @@
+module_name: AdyenCheckout
+author_name: Adyen
+author_url: https://adyen.com
+github_url: https://github.com/adyen/Checkout-cocoa
+clean: true
+
+podspec: AdyenCheckout.podspec
+
+docset_icon: Example/AdyenCheckout/Images.xcassets/AppIcon.appiconset/Icon.png
+
+excluded_files: Example/
+
+swift_version: 2.1
+
+copyright: '© 2015 [Adyen](http://adyen.com).'
+
+custom_categories:
+  - name: General
+    children:
+    - Checkout
+    - PaymentData
+
+  - name: UI
+    children:
+    - CheckoutViewController
+    - CheckoutViewControllerDelegate
+    - CheckoutHeaderView
+    - CheckoutPaymentButton
+    - CheckoutPaymentFieldView
+    - CheckoutPaymentFieldDelegate
+
+  - name: Card
+    children:
+    - CheckoutCardViewController
+    - CardPaymentData
+    - CardType
+    - CardPaymentField
+
+
+  # --clean \
+  # --author Adyen \
+  # --author_url https://adyen.com \
+  # --github_url https://github.com/adyen/Checkout-iOS \
+  # --module Checkout

@@ -1,0 +1,23 @@
+{
+  "name": "AdyenCheckout",
+  "version": "0.1.0",
+  "summary": "A short description of AdyenCheckout.",
+  "description": "",
+  "homepage": "https://github.com/Adyen/AdyenCheckout",
+  "license": "MIT",
+  "authors": {
+    "Taras Kalapun": "t.kalapun@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/Adyen/AdyenCheckout.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "requires_arc": true,
+  "source_files": "Checkout/**/*",
+  "resources": [
+    "Checkout.xcassets"
+  ]
+}

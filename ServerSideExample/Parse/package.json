@@ -1,0 +1,13 @@
+{
+  "name": "merchant-pay-parse",
+  "version": "0.0.1",
+  "description": "Adyen Merchant server demo on Parse.com",
+  "main": "server.js",
+  "dependencies": {
+    "parse": "~1.6",
+    "parse-cloud-express": "~1.1"
+  },
+  "devDependencies": {},
+  "author": "Taras Kalapun",
+  "license": "MIT"
+}

@@ -1,0 +1,778 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		063E338573B0DADF2F3258BD2778E090 /* AdyenCheckout-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 46AED3DCB846477BE7F0A1E017BAA17A /* AdyenCheckout-dummy.m */; };
+		0A16AB3531573E4E26A02F1A16CBFD34 /* ADYCryptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF18B894D49A79F09305D3D74CC8155 /* ADYCryptor.swift */; };
+		119E6783A85FD9D48D1868BBCE6FCB7D /* TKCryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = D0ED8A112A32EFC446231C6166898160 /* TKCryptor.m */; };
+		120E8F995A8EA68F6174D0C055693BD4 /* TKCryptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B727BA9C874C283C884BA2E7ABA6A94 /* TKCryptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1855BA79DD33880978506821835A9C7F /* CheckoutPayment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C8E8C3DD91084AA337F12AEE16F1AB /* CheckoutPayment.swift */; };
+		24320EE9551A8285565104F33BCB26FE /* CheckoutUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3A73813CFC8EEBF61DACDA3115FFCB /* CheckoutUI.swift */; };
+		258CD94F8676341638DCD973CFA61F0D /* ADYRSACryptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D171625D5C2D593F6749BFB0F0A8D5E0 /* ADYRSACryptor.swift */; };
+		31C8DE67BD38CE23557F618F0B5834BB /* Checkout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330F7B17041C30E1D7FC5C3899681A4E /* Checkout.swift */; };
+		387B29D6D5268D52BBCB3210CDDFB8B3 /* Pods-AdyenCheckout_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CFAA790E2F0229923FEF9655B72D0A /* Pods-AdyenCheckout_Tests-dummy.m */; };
+		46E68DB46965B809764079367B9A8C2C /* Pods-AdyenCheckout_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F4B640C75AF00C87C68252604DA508AB /* Pods-AdyenCheckout_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		51D593228E0476AB65B0AF7E304D3591 /* CheckoutCardUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE109D7CB684E0CC5A3926EB88495C86 /* CheckoutCardUI.swift */; };
+		580EB81065D8F69EB5FE925A32710384 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
+		5EED2C39CBB7F2CBCE4B9402ED122221 /* TKAESCCMCryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 549B5CE7542CDF9EAE8B66E1FEB55E41 /* TKAESCCMCryptor.m */; };
+		620A905367B2CA54D0E68E68E14A6A2B /* CheckoutRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F7098EA82A2DA64DE00DECEBD06678C /* CheckoutRequest.swift */; };
+		630879ACE12366EC6E7DE8C7AD0222BD /* CheckoutPaymentFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39746429D4F046AC976735F823B5F236 /* CheckoutPaymentFieldView.swift */; };
+		6427C9C1FC0EF43180B80677A6BC9640 /* CheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EEE1845FB5A479C43CC10FEEBBCEC8 /* CheckoutViewController.swift */; };
+		66988CD855BBA2A91A4B4EF56CA07A14 /* TKRSACryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = CC497B33AB0B52322ADE1CC1694788DC /* TKRSACryptor.m */; };
+		67282C95F23DAFA1456376E17AEE3985 /* TKAESCCMCryptor.h in Headers */ = {isa = PBXBuildFile; fileRef = A133796EAA274842D5E89EB9CBC984E0 /* TKAESCCMCryptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6D4D000AD61B8A74C778861E744A8AA5 /* CheckoutCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F9CEA42FD37B5309A110E780BA69D3 /* CheckoutCardViewController.swift */; };
+		734139F009FD291BE5B7B8168C6A956C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
+		8780A74B7381E7337A44F9A457D4B88E /* CheckoutPaymentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4408DB36217B0DAA9E8CF288A4C01145 /* CheckoutPaymentButton.swift */; };
+		88AC40C319A08C57EB32819609BA7508 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
+		B48E00C99123B71CD4F8CEA0CC17395F /* Pods-AdyenCheckout_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7BF0D089C2E90354A67B128BFCE7F915 /* Pods-AdyenCheckout_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B97D1A52E6660DFC41D29054B730604B /* AdyenCheckout-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A13FA9F14420E346B08D1CB8EF18E1F2 /* AdyenCheckout-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D653F8A49206A0FC8BDC772451A2D5F5 /* CheckoutCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3BDFADCA50F5903C2472C89173380A /* CheckoutCard.swift */; };
+		E941B541C01AF07CF7C485E9FDB099E7 /* CheckoutApplePay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7612D9E9274C6799AD23151AA650B07F /* CheckoutApplePay.swift */; };
+		ECB9257D87A277FE4199814FE57340ED /* TKRSACryptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B5D4476CB19A7C964ED9BC7C51FAD83 /* TKRSACryptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2D50EA4415EB244B6465032F8197171 /* Pods-AdyenCheckout_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4046C5C38024276F77FCC8B9BEB36765 /* Pods-AdyenCheckout_Example-dummy.m */; };
+		F66182743940A74465265D7A7986D4F0 /* CheckoutHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A103302A25C2CCA6B72FCF9681C19DF3 /* CheckoutHeaderView.swift */; };
+		FA70E67ADFEBBE7F1076A826467B55A0 /* Checkout.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BED0A60B9B3011E8F6E94A469C6B02E4 /* Checkout.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		21CC5EA2EAFF326C6976E391FB0726D2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 42DB637286C923036CE4EE8DA1889DE3;
+			remoteInfo = AdyenCheckout;
+		};
+		50ACDF4372DE87867E0629857E060A3F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 42DB637286C923036CE4EE8DA1889DE3;
+			remoteInfo = AdyenCheckout;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0947C8D67297BF38343596E73A8A2E04 /* Pods-AdyenCheckout_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AdyenCheckout_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		0B5D4476CB19A7C964ED9BC7C51FAD83 /* TKRSACryptor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TKRSACryptor.h; sourceTree = "<group>"; };
+		1348809AF0F0706220057EEFBC53F70B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		13DD349F27FCE23CF85D3DEE763D8AFC /* Pods-AdyenCheckout_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-AdyenCheckout_Tests-frameworks.sh"; sourceTree = "<group>"; };
+		1B3A73813CFC8EEBF61DACDA3115FFCB /* CheckoutUI.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CheckoutUI.swift; sourceTree = "<group>"; };
+		1E5DE667794B88D9AA34D175A3DB8C14 /* Pods-AdyenCheckout_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AdyenCheckout_Example.release.xcconfig"; sourceTree = "<group>"; };
+		20158A4F0F47D7776ECE3744474FBB40 /* Pods-AdyenCheckout_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-AdyenCheckout_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		22CFAA790E2F0229923FEF9655B72D0A /* Pods-AdyenCheckout_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-AdyenCheckout_Tests-dummy.m"; sourceTree = "<group>"; };
+		27D8F777F3B6995D1C5E3CC7335E8247 /* Pods-AdyenCheckout_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-AdyenCheckout_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		2AF18B894D49A79F09305D3D74CC8155 /* ADYCryptor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ADYCryptor.swift; sourceTree = "<group>"; };
+		330F7B17041C30E1D7FC5C3899681A4E /* Checkout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Checkout.swift; sourceTree = "<group>"; };
+		334A3DC7A12C60A5F4019E5AF4C72A6A /* Pods-AdyenCheckout_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-AdyenCheckout_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		35AC2F0248D5CDE40DF4C939A0045217 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		39746429D4F046AC976735F823B5F236 /* CheckoutPaymentFieldView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CheckoutPaymentFieldView.swift; sourceTree = "<group>"; };
+		3D01404C54384B80B14E70922EC94B30 /* Pods-AdyenCheckout_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-AdyenCheckout_Tests-resources.sh"; sourceTree = "<group>"; };
+		3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		4046C5C38024276F77FCC8B9BEB36765 /* Pods-AdyenCheckout_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-AdyenCheckout_Example-dummy.m"; sourceTree = "<group>"; };
+		4408DB36217B0DAA9E8CF288A4C01145 /* CheckoutPaymentButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CheckoutPaymentButton.swift; sourceTree = "<group>"; };
+		46AED3DCB846477BE7F0A1E017BAA17A /* AdyenCheckout-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "AdyenCheckout-dummy.m"; sourceTree = "<group>"; };
+		49EEE1845FB5A479C43CC10FEEBBCEC8 /* CheckoutViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CheckoutViewController.swift; sourceTree = "<group>"; };
+		4B5C79C87F9EC1F3C9E0F7F48D40AD0E /* Pods-AdyenCheckout_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-AdyenCheckout_Tests.modulemap"; sourceTree = "<group>"; };
+		549B5CE7542CDF9EAE8B66E1FEB55E41 /* TKAESCCMCryptor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TKAESCCMCryptor.m; sourceTree = "<group>"; };
+		558B73943DABCB9F6C050C00C6853115 /* Pods-AdyenCheckout_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AdyenCheckout_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		5DA923581EB90A5AEAC8CE9A50AC11F1 /* AdyenCheckout.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AdyenCheckout.xcconfig; sourceTree = "<group>"; };
+		7612D9E9274C6799AD23151AA650B07F /* CheckoutApplePay.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CheckoutApplePay.swift; sourceTree = "<group>"; };
+		76F9CEA42FD37B5309A110E780BA69D3 /* CheckoutCardViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CheckoutCardViewController.swift; sourceTree = "<group>"; };
+		7BF0D089C2E90354A67B128BFCE7F915 /* Pods-AdyenCheckout_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-AdyenCheckout_Tests-umbrella.h"; sourceTree = "<group>"; };
+		804833A7455539FF8EAE327CF7FBED11 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8B727BA9C874C283C884BA2E7ABA6A94 /* TKCryptor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TKCryptor.h; sourceTree = "<group>"; };
+		8E070BF580689B73E1884159A2E9C06D /* Pods-AdyenCheckout_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-AdyenCheckout_Example.modulemap"; sourceTree = "<group>"; };
+		8F7098EA82A2DA64DE00DECEBD06678C /* CheckoutRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CheckoutRequest.swift; sourceTree = "<group>"; };
+		A103302A25C2CCA6B72FCF9681C19DF3 /* CheckoutHeaderView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CheckoutHeaderView.swift; sourceTree = "<group>"; };
+		A133796EAA274842D5E89EB9CBC984E0 /* TKAESCCMCryptor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TKAESCCMCryptor.h; sourceTree = "<group>"; };
+		A13FA9F14420E346B08D1CB8EF18E1F2 /* AdyenCheckout-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AdyenCheckout-umbrella.h"; sourceTree = "<group>"; };
+		A559CB2778CA2BB14AD9CE3CE58579A8 /* Pods_AdyenCheckout_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AdyenCheckout_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF3BDFADCA50F5903C2472C89173380A /* CheckoutCard.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CheckoutCard.swift; sourceTree = "<group>"; };
+		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		BCA657422D5F4006E6FC7AB2324F2897 /* Pods-AdyenCheckout_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-AdyenCheckout_Example-frameworks.sh"; sourceTree = "<group>"; };
+		BED0A60B9B3011E8F6E94A469C6B02E4 /* Checkout.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; path = Checkout.xcassets; sourceTree = "<group>"; };
+		C34F4BD1FAB45BBB1A99A03C62AC54D3 /* Pods-AdyenCheckout_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AdyenCheckout_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		C8C8E8C3DD91084AA337F12AEE16F1AB /* CheckoutPayment.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CheckoutPayment.swift; sourceTree = "<group>"; };
+		CC497B33AB0B52322ADE1CC1694788DC /* TKRSACryptor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TKRSACryptor.m; sourceTree = "<group>"; };
+		CCE514670A6647C11DF742BC88944C7D /* Pods-AdyenCheckout_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-AdyenCheckout_Example-resources.sh"; sourceTree = "<group>"; };
+		D0ED8A112A32EFC446231C6166898160 /* TKCryptor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TKCryptor.m; sourceTree = "<group>"; };
+		D171625D5C2D593F6749BFB0F0A8D5E0 /* ADYRSACryptor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ADYRSACryptor.swift; sourceTree = "<group>"; };
+		D3D4251D245666E4CA4A3BCADC5AA5CD /* AdyenCheckout.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = AdyenCheckout.modulemap; sourceTree = "<group>"; };
+		D50D95CF12A8FF0FECCC6E8062B241FC /* AdyenCheckout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AdyenCheckout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE6EF59111504BB8491B524F4950BEBD /* Pods_AdyenCheckout_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AdyenCheckout_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F02B4829F8F4B22EE787125B041AF21B /* Pods-AdyenCheckout_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-AdyenCheckout_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		F4B640C75AF00C87C68252604DA508AB /* Pods-AdyenCheckout_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-AdyenCheckout_Example-umbrella.h"; sourceTree = "<group>"; };
+		F7325A127E8EFA02DCEC5DA02DA5C5A6 /* AdyenCheckout-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AdyenCheckout-prefix.pch"; sourceTree = "<group>"; };
+		FE109D7CB684E0CC5A3926EB88495C86 /* CheckoutCardUI.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CheckoutCardUI.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		40E7ADF2E6F4224412B327784BA042E4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				580EB81065D8F69EB5FE925A32710384 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BE382AA2C5DE64D4ACE9250A0BAC66D9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				734139F009FD291BE5B7B8168C6A956C /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FB7322587DEF272425C76891BC0D7CD5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				88AC40C319A08C57EB32819609BA7508 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1064313B4798759809934FE61316D87C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D50D95CF12A8FF0FECCC6E8062B241FC /* AdyenCheckout.framework */,
+				EE6EF59111504BB8491B524F4950BEBD /* Pods_AdyenCheckout_Example.framework */,
+				A559CB2778CA2BB14AD9CE3CE58579A8 /* Pods_AdyenCheckout_Tests.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		23094D41244E116325687000A499AB72 /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				58333181677A2B32862438E1A375B2F8 /* AdyenCheckout */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		3C4CB5D612FB383A765CFADAEB0C06DA /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				7BD97AE841CD3C129ECC991642F8338F /* Pods-AdyenCheckout_Example */,
+				481D13A88F401F61D0D34A9429CD09C8 /* Pods-AdyenCheckout_Tests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		481D13A88F401F61D0D34A9429CD09C8 /* Pods-AdyenCheckout_Tests */ = {
+			isa = PBXGroup;
+			children = (
+				35AC2F0248D5CDE40DF4C939A0045217 /* Info.plist */,
+				4B5C79C87F9EC1F3C9E0F7F48D40AD0E /* Pods-AdyenCheckout_Tests.modulemap */,
+				20158A4F0F47D7776ECE3744474FBB40 /* Pods-AdyenCheckout_Tests-acknowledgements.markdown */,
+				27D8F777F3B6995D1C5E3CC7335E8247 /* Pods-AdyenCheckout_Tests-acknowledgements.plist */,
+				22CFAA790E2F0229923FEF9655B72D0A /* Pods-AdyenCheckout_Tests-dummy.m */,
+				13DD349F27FCE23CF85D3DEE763D8AFC /* Pods-AdyenCheckout_Tests-frameworks.sh */,
+				3D01404C54384B80B14E70922EC94B30 /* Pods-AdyenCheckout_Tests-resources.sh */,
+				7BF0D089C2E90354A67B128BFCE7F915 /* Pods-AdyenCheckout_Tests-umbrella.h */,
+				0947C8D67297BF38343596E73A8A2E04 /* Pods-AdyenCheckout_Tests.debug.xcconfig */,
+				558B73943DABCB9F6C050C00C6853115 /* Pods-AdyenCheckout_Tests.release.xcconfig */,
+			);
+			name = "Pods-AdyenCheckout_Tests";
+			path = "Target Support Files/Pods-AdyenCheckout_Tests";
+			sourceTree = "<group>";
+		};
+		483ECE9922E4E9D4595FB3B12AA66BAD /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BED0A60B9B3011E8F6E94A469C6B02E4 /* Checkout.xcassets */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		55184BAB4648BF860308A8858C906CDB /* ADYEncryption */ = {
+			isa = PBXGroup;
+			children = (
+				A133796EAA274842D5E89EB9CBC984E0 /* TKAESCCMCryptor.h */,
+				549B5CE7542CDF9EAE8B66E1FEB55E41 /* TKAESCCMCryptor.m */,
+				8B727BA9C874C283C884BA2E7ABA6A94 /* TKCryptor.h */,
+				D0ED8A112A32EFC446231C6166898160 /* TKCryptor.m */,
+				0B5D4476CB19A7C964ED9BC7C51FAD83 /* TKRSACryptor.h */,
+				CC497B33AB0B52322ADE1CC1694788DC /* TKRSACryptor.m */,
+			);
+			path = ADYEncryption;
+			sourceTree = "<group>";
+		};
+		58333181677A2B32862438E1A375B2F8 /* AdyenCheckout */ = {
+			isa = PBXGroup;
+			children = (
+				CAE06417D621A39458F89A88D39FA8E4 /* Checkout */,
+				483ECE9922E4E9D4595FB3B12AA66BAD /* Resources */,
+				A9FB6B717D28B74130C57B7E6A4FF1E4 /* Support Files */,
+			);
+			name = AdyenCheckout;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		7BD97AE841CD3C129ECC991642F8338F /* Pods-AdyenCheckout_Example */ = {
+			isa = PBXGroup;
+			children = (
+				1348809AF0F0706220057EEFBC53F70B /* Info.plist */,
+				8E070BF580689B73E1884159A2E9C06D /* Pods-AdyenCheckout_Example.modulemap */,
+				F02B4829F8F4B22EE787125B041AF21B /* Pods-AdyenCheckout_Example-acknowledgements.markdown */,
+				334A3DC7A12C60A5F4019E5AF4C72A6A /* Pods-AdyenCheckout_Example-acknowledgements.plist */,
+				4046C5C38024276F77FCC8B9BEB36765 /* Pods-AdyenCheckout_Example-dummy.m */,
+				BCA657422D5F4006E6FC7AB2324F2897 /* Pods-AdyenCheckout_Example-frameworks.sh */,
+				CCE514670A6647C11DF742BC88944C7D /* Pods-AdyenCheckout_Example-resources.sh */,
+				F4B640C75AF00C87C68252604DA508AB /* Pods-AdyenCheckout_Example-umbrella.h */,
+				C34F4BD1FAB45BBB1A99A03C62AC54D3 /* Pods-AdyenCheckout_Example.debug.xcconfig */,
+				1E5DE667794B88D9AA34D175A3DB8C14 /* Pods-AdyenCheckout_Example.release.xcconfig */,
+			);
+			name = "Pods-AdyenCheckout_Example";
+			path = "Target Support Files/Pods-AdyenCheckout_Example";
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */,
+				23094D41244E116325687000A499AB72 /* Development Pods */,
+				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				1064313B4798759809934FE61316D87C /* Products */,
+				3C4CB5D612FB383A765CFADAEB0C06DA /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		A9FB6B717D28B74130C57B7E6A4FF1E4 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				D3D4251D245666E4CA4A3BCADC5AA5CD /* AdyenCheckout.modulemap */,
+				5DA923581EB90A5AEAC8CE9A50AC11F1 /* AdyenCheckout.xcconfig */,
+				46AED3DCB846477BE7F0A1E017BAA17A /* AdyenCheckout-dummy.m */,
+				F7325A127E8EFA02DCEC5DA02DA5C5A6 /* AdyenCheckout-prefix.pch */,
+				A13FA9F14420E346B08D1CB8EF18E1F2 /* AdyenCheckout-umbrella.h */,
+				804833A7455539FF8EAE327CF7FBED11 /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/AdyenCheckout";
+			sourceTree = "<group>";
+		};
+		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BF6342C8B29F4CEEA088EFF7AB4DE362 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BF6342C8B29F4CEEA088EFF7AB4DE362 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		CAE06417D621A39458F89A88D39FA8E4 /* Checkout */ = {
+			isa = PBXGroup;
+			children = (
+				2AF18B894D49A79F09305D3D74CC8155 /* ADYCryptor.swift */,
+				D171625D5C2D593F6749BFB0F0A8D5E0 /* ADYRSACryptor.swift */,
+				330F7B17041C30E1D7FC5C3899681A4E /* Checkout.swift */,
+				7612D9E9274C6799AD23151AA650B07F /* CheckoutApplePay.swift */,
+				AF3BDFADCA50F5903C2472C89173380A /* CheckoutCard.swift */,
+				FE109D7CB684E0CC5A3926EB88495C86 /* CheckoutCardUI.swift */,
+				76F9CEA42FD37B5309A110E780BA69D3 /* CheckoutCardViewController.swift */,
+				A103302A25C2CCA6B72FCF9681C19DF3 /* CheckoutHeaderView.swift */,
+				C8C8E8C3DD91084AA337F12AEE16F1AB /* CheckoutPayment.swift */,
+				4408DB36217B0DAA9E8CF288A4C01145 /* CheckoutPaymentButton.swift */,
+				39746429D4F046AC976735F823B5F236 /* CheckoutPaymentFieldView.swift */,
+				8F7098EA82A2DA64DE00DECEBD06678C /* CheckoutRequest.swift */,
+				1B3A73813CFC8EEBF61DACDA3115FFCB /* CheckoutUI.swift */,
+				49EEE1845FB5A479C43CC10FEEBBCEC8 /* CheckoutViewController.swift */,
+				55184BAB4648BF860308A8858C906CDB /* ADYEncryption */,
+			);
+			path = Checkout;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		07F73F2569E0C2B04FD18A05C90FB49D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B48E00C99123B71CD4F8CEA0CC17395F /* Pods-AdyenCheckout_Tests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B9947ED89FD0884EA7C168ABBEACD8E6 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				46E68DB46965B809764079367B9A8C2C /* Pods-AdyenCheckout_Example-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E35310A42BC949B36380D0834B4A3043 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B97D1A52E6660DFC41D29054B730604B /* AdyenCheckout-umbrella.h in Headers */,
+				67282C95F23DAFA1456376E17AEE3985 /* TKAESCCMCryptor.h in Headers */,
+				120E8F995A8EA68F6174D0C055693BD4 /* TKCryptor.h in Headers */,
+				ECB9257D87A277FE4199814FE57340ED /* TKRSACryptor.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		42DB637286C923036CE4EE8DA1889DE3 /* AdyenCheckout */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C2282D71E64F939A5B909787068CB5C9 /* Build configuration list for PBXNativeTarget "AdyenCheckout" */;
+			buildPhases = (
+				E3D07A3FFAFDC1FC64277BBF1F5205F5 /* Sources */,
+				FB7322587DEF272425C76891BC0D7CD5 /* Frameworks */,
+				E35310A42BC949B36380D0834B4A3043 /* Headers */,
+				430B7688F66E53CF74CFD4EF59EFAAA9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AdyenCheckout;
+			productName = AdyenCheckout;
+			productReference = D50D95CF12A8FF0FECCC6E8062B241FC /* AdyenCheckout.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		4AB4CF5191C7B30FA6C014502247F2AD /* Pods-AdyenCheckout_Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1A7767BEE6D6B2618E9A380A847ACE31 /* Build configuration list for PBXNativeTarget "Pods-AdyenCheckout_Tests" */;
+			buildPhases = (
+				0B348302A6456F9CB50AFE8D64CDCAB1 /* Sources */,
+				40E7ADF2E6F4224412B327784BA042E4 /* Frameworks */,
+				07F73F2569E0C2B04FD18A05C90FB49D /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9DB6DDD33B6B5EF7BFF203D9501F881A /* PBXTargetDependency */,
+			);
+			name = "Pods-AdyenCheckout_Tests";
+			productName = "Pods-AdyenCheckout_Tests";
+			productReference = A559CB2778CA2BB14AD9CE3CE58579A8 /* Pods_AdyenCheckout_Tests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		FF73108AB3C77606AC126FC9EE51AE73 /* Pods-AdyenCheckout_Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 45031666D64738665E74ABF2332AB976 /* Build configuration list for PBXNativeTarget "Pods-AdyenCheckout_Example" */;
+			buildPhases = (
+				799CDC53E6F2339F045AA62CDD01A3D9 /* Sources */,
+				BE382AA2C5DE64D4ACE9250A0BAC66D9 /* Frameworks */,
+				B9947ED89FD0884EA7C168ABBEACD8E6 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CE94B021CD53C9BB695D17C7F57229BA /* PBXTargetDependency */,
+			);
+			name = "Pods-AdyenCheckout_Example";
+			productName = "Pods-AdyenCheckout_Example";
+			productReference = EE6EF59111504BB8491B524F4950BEBD /* Pods_AdyenCheckout_Example.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = 1064313B4798759809934FE61316D87C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				42DB637286C923036CE4EE8DA1889DE3 /* AdyenCheckout */,
+				FF73108AB3C77606AC126FC9EE51AE73 /* Pods-AdyenCheckout_Example */,
+				4AB4CF5191C7B30FA6C014502247F2AD /* Pods-AdyenCheckout_Tests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		430B7688F66E53CF74CFD4EF59EFAAA9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA70E67ADFEBBE7F1076A826467B55A0 /* Checkout.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0B348302A6456F9CB50AFE8D64CDCAB1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				387B29D6D5268D52BBCB3210CDDFB8B3 /* Pods-AdyenCheckout_Tests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		799CDC53E6F2339F045AA62CDD01A3D9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2D50EA4415EB244B6465032F8197171 /* Pods-AdyenCheckout_Example-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E3D07A3FFAFDC1FC64277BBF1F5205F5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0A16AB3531573E4E26A02F1A16CBFD34 /* ADYCryptor.swift in Sources */,
+				063E338573B0DADF2F3258BD2778E090 /* AdyenCheckout-dummy.m in Sources */,
+				258CD94F8676341638DCD973CFA61F0D /* ADYRSACryptor.swift in Sources */,
+				31C8DE67BD38CE23557F618F0B5834BB /* Checkout.swift in Sources */,
+				E941B541C01AF07CF7C485E9FDB099E7 /* CheckoutApplePay.swift in Sources */,
+				D653F8A49206A0FC8BDC772451A2D5F5 /* CheckoutCard.swift in Sources */,
+				51D593228E0476AB65B0AF7E304D3591 /* CheckoutCardUI.swift in Sources */,
+				6D4D000AD61B8A74C778861E744A8AA5 /* CheckoutCardViewController.swift in Sources */,
+				F66182743940A74465265D7A7986D4F0 /* CheckoutHeaderView.swift in Sources */,
+				1855BA79DD33880978506821835A9C7F /* CheckoutPayment.swift in Sources */,
+				8780A74B7381E7337A44F9A457D4B88E /* CheckoutPaymentButton.swift in Sources */,
+				630879ACE12366EC6E7DE8C7AD0222BD /* CheckoutPaymentFieldView.swift in Sources */,
+				620A905367B2CA54D0E68E68E14A6A2B /* CheckoutRequest.swift in Sources */,
+				24320EE9551A8285565104F33BCB26FE /* CheckoutUI.swift in Sources */,
+				6427C9C1FC0EF43180B80677A6BC9640 /* CheckoutViewController.swift in Sources */,
+				5EED2C39CBB7F2CBCE4B9402ED122221 /* TKAESCCMCryptor.m in Sources */,
+				119E6783A85FD9D48D1868BBCE6FCB7D /* TKCryptor.m in Sources */,
+				66988CD855BBA2A91A4B4EF56CA07A14 /* TKRSACryptor.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9DB6DDD33B6B5EF7BFF203D9501F881A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = AdyenCheckout;
+			target = 42DB637286C923036CE4EE8DA1889DE3 /* AdyenCheckout */;
+			targetProxy = 50ACDF4372DE87867E0629857E060A3F /* PBXContainerItemProxy */;
+		};
+		CE94B021CD53C9BB695D17C7F57229BA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = AdyenCheckout;
+			target = 42DB637286C923036CE4EE8DA1889DE3 /* AdyenCheckout */;
+			targetProxy = 21CC5EA2EAFF326C6976E391FB0726D2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		10DE1947DAC0ED28F6C0A9F9BD75D546 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2E280B6993937DA1373CB9937D26D808 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0947C8D67297BF38343596E73A8A2E04 /* Pods-AdyenCheckout_Tests.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-AdyenCheckout_Tests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-AdyenCheckout_Tests/Pods-AdyenCheckout_Tests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = Pods_AdyenCheckout_Tests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		3369435F07CA6D9601DF0FA08EE3344C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1E5DE667794B88D9AA34D175A3DB8C14 /* Pods-AdyenCheckout_Example.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-AdyenCheckout_Example/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-AdyenCheckout_Example/Pods-AdyenCheckout_Example.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = Pods_AdyenCheckout_Example;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		552D02D5BA751AC2E8790D2811D496CA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				ONLY_ACTIVE_ARCH = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		6049EF77E2A343D01F349B52EDC84EE0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C34F4BD1FAB45BBB1A99A03C62AC54D3 /* Pods-AdyenCheckout_Example.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-AdyenCheckout_Example/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-AdyenCheckout_Example/Pods-AdyenCheckout_Example.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = Pods_AdyenCheckout_Example;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		A015BA70AC7B6CFF3FCA3C429728C109 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5DA923581EB90A5AEAC8CE9A50AC11F1 /* AdyenCheckout.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/AdyenCheckout/AdyenCheckout-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/AdyenCheckout/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/AdyenCheckout/AdyenCheckout.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = AdyenCheckout;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		C8EB7D371A661AD664AF91486E67FA91 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5DA923581EB90A5AEAC8CE9A50AC11F1 /* AdyenCheckout.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/AdyenCheckout/AdyenCheckout-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/AdyenCheckout/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/AdyenCheckout/AdyenCheckout.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = AdyenCheckout;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		C9F001DFF44C806E1DED5871F14B5EC4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 558B73943DABCB9F6C050C00C6853115 /* Pods-AdyenCheckout_Tests.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-AdyenCheckout_Tests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-AdyenCheckout_Tests/Pods-AdyenCheckout_Tests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = Pods_AdyenCheckout_Tests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1A7767BEE6D6B2618E9A380A847ACE31 /* Build configuration list for PBXNativeTarget "Pods-AdyenCheckout_Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2E280B6993937DA1373CB9937D26D808 /* Debug */,
+				C9F001DFF44C806E1DED5871F14B5EC4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				552D02D5BA751AC2E8790D2811D496CA /* Debug */,
+				10DE1947DAC0ED28F6C0A9F9BD75D546 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		45031666D64738665E74ABF2332AB976 /* Build configuration list for PBXNativeTarget "Pods-AdyenCheckout_Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6049EF77E2A343D01F349B52EDC84EE0 /* Debug */,
+				3369435F07CA6D9601DF0FA08EE3344C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C2282D71E64F939A5B909787068CB5C9 /* Build configuration list for PBXNativeTarget "AdyenCheckout" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C8EB7D371A661AD664AF91486E67FA91 /* Debug */,
+				A015BA70AC7B6CFF3FCA3C429728C109 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}

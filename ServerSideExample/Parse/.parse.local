@@ -1,0 +1,10 @@
+{
+  "applications": {
+    "_default": {
+      "link": "merchant-pay"
+    },
+    "merchant-pay": {
+      "applicationId": "06S661686ypPVb5FHPTdgzFYg8rswibsXP7GgCfC"
+    }
+  }
+}

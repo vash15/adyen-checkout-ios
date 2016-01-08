@@ -1,0 +1,6 @@
+framework module AdyenCheckout {
+  umbrella header "AdyenCheckout-umbrella.h"
+
+  export *
+  module * { export * }
+}

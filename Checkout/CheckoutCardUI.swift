@@ -152,11 +152,14 @@ public class CardPaymentField: CheckoutPaymentFieldView, UITextFieldDelegate {
     }
     
     public override func paymentData() -> PaymentData {
-        let card = CardPaymentData()
-        card.name = nameField.text
-        card.number = numberField.text
-        card.cvc = cvcField.text
-        card.expirationDate = expirationField.text
+        // Consider if this method should validate inputs and be able to throw
+        
+        let number = numberField.text ?? ""
+        let cvc = cvcField.text ?? ""
+        let expirationDate = expirationField.text ?? ""
+        let name = nameField.text
+        
+        let card = CardPaymentData(number: number, cvc: cvc, expirationDate: expirationDate, name: name)
         return card
     }
     

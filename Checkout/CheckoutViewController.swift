@@ -19,7 +19,7 @@ public enum CheckoutAuthorizationStatus : Int {
 
 
 public protocol CheckoutViewControllerDelegate: class {
-    func checkoutViewController(controller: CheckoutViewController, authorizedPayment paymen: CheckoutPayment)
+    func checkoutViewController(controller: CheckoutViewController, authorizedPayment payment: CheckoutPayment)
     func checkoutViewController(controller: CheckoutViewController, failedWithError error: NSError)
 }
 

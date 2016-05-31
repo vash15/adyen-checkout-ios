@@ -85,16 +85,23 @@ public enum CardType: String {
 /// A Card `PaymentData` object
 public class CardPaymentData: PaymentData {
     /// Card number
-    var number: String!
+    var number: String
     
     /// Card CVC
-    var cvc: String!
+    var cvc: String
     
     /// Expiration Date MMYY
-    var expirationDate: String!
+    var expirationDate: String
     
     /// Card holder name, optional
     var name: String?
+    
+    public init(number: String, cvc: String, expirationDate: String, name: String?) {
+        self.number = number
+        self.cvc = cvc
+        self.expirationDate = expirationDate
+        self.name = name
+    }
     
     public func serialize() throws -> String {
         var d = [String: String]()

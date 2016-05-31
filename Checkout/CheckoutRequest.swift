@@ -8,8 +8,6 @@
 
 import Foundation
 
-import Foundation
-
 /**
  The `CheckoutRequest` class encapsulates a request for payment, including information about amount, currency and reference.
  */

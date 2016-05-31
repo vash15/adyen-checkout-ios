@@ -24,7 +24,7 @@ public class CheckoutPayment : NSObject {
     /// merchant's e-commerce backend to payment processor's gateway.
     private(set) public var paymentData: String
     
-    init(request: CheckoutRequest, encryptedData: String) {
+    public init(request: CheckoutRequest, encryptedData: String) {
         amount = request.amount
         currency = request.currency
         reference = request.reference

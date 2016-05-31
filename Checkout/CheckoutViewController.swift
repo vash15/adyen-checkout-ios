@@ -18,15 +18,15 @@ public enum CheckoutAuthorizationStatus : Int {
 }
 
 
-public protocol CheckoutViewControllerDelegate {
-    func checkoutViewController(controller: CheckoutViewController, authorizedPayment paymen: CheckoutPayment)
+public protocol CheckoutViewControllerDelegate: class {
+    func checkoutViewController(controller: CheckoutViewController, authorizedPayment payment: CheckoutPayment)
     func checkoutViewController(controller: CheckoutViewController, failedWithError error: NSError)
 }
 
 public class CheckoutViewController: UIViewController, CheckoutPaymentFieldDelegate {
     
     public var request: CheckoutRequest!
-    public var delegate: CheckoutViewControllerDelegate?
+    public weak var delegate: CheckoutViewControllerDelegate?
     
     /// Logo image to be shown in a header view
     public var logoImage: UIImage?

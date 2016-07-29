@@ -16,8 +16,8 @@ public class CheckoutHeaderView: UIView {
     public var textColor = UIColor?()
     
     let imageView = UIImageView()
-    let titleLabel = UILabel()
-    let detailLabel = UILabel()
+    public let titleLabel = UILabel()
+    public let detailLabel = UILabel()
     
     
     public required init?(coder aDecoder: NSCoder) {

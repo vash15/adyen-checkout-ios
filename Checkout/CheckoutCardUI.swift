@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CardNumberField: CheckoutTextField {
+public class CardNumberField: CheckoutTextField {
     var card = CardType.Unknown {
         didSet {
             resetCard()
@@ -37,7 +37,7 @@ class CardNumberField: CheckoutTextField {
     }
 }
 
-class CardExpirationField: CheckoutTextField {
+public class CardExpirationField: CheckoutTextField {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.keyboardType = .NumberPad
@@ -62,7 +62,7 @@ class CardExpirationField: CheckoutTextField {
     }
 }
 
-class CardCvcField: CheckoutTextField {
+public class CardCvcField: CheckoutTextField {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.keyboardType = .NumberPad
@@ -76,7 +76,7 @@ class CardCvcField: CheckoutTextField {
     }
 }
 
-class CardNameField: CheckoutTextField {
+public class CardNameField: CheckoutTextField {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.keyboardType = .ASCIICapable
@@ -98,10 +98,10 @@ public class CardPaymentField: CheckoutPaymentFieldView, UITextFieldDelegate {
     let fieldPadding:CGFloat = 2;
     let fieldHeight:CGFloat = 44;
     
-    let numberField = CardNumberField(frame: CGRect.zero)
-    let expirationField = CardExpirationField(frame: CGRect.zero)
-    let cvcField = CardCvcField(frame: CGRect.zero)
-    let nameField = CardNameField(frame: CGRect.zero)
+    public let numberField = CardNumberField(frame: CGRect.zero)
+    public let expirationField = CardExpirationField(frame: CGRect.zero)
+    public let cvcField = CardCvcField(frame: CGRect.zero)
+    public let nameField = CardNameField(frame: CGRect.zero)
     
     let topLine = UIView(frame: CGRect.zero)
     let middleLine = UIView(frame: CGRect.zero)

@@ -138,10 +138,10 @@ public class CardPaymentField: CheckoutPaymentFieldView, UITextFieldDelegate {
         self.addSubview(bottomLine)
         self.addSubview(splitLine)
         
-//        if (showNameField) {
-            self.addSubview(nameField)
-            self.addSubview(middleLine2)
-//        }
+        //        if (showNameField) {
+        self.addSubview(nameField)
+        self.addSubview(middleLine2)
+        //        }
         
         let borderColor = UIColor.adyGreyColor
         for bv in [topLine, middleLine, middleLine2, bottomLine, splitLine] {
@@ -169,8 +169,8 @@ public class CardPaymentField: CheckoutPaymentFieldView, UITextFieldDelegate {
     
     public override func layoutSubviews() {
         guard let sView = self.superview else { return }
-    
-//    public override func willMoveToSuperview(newSuperview: UIView?) {
+        
+        //    public override func willMoveToSuperview(newSuperview: UIView?) {
         
         
         let sFrame = sView.bounds
@@ -251,7 +251,7 @@ public class CardPaymentField: CheckoutPaymentFieldView, UITextFieldDelegate {
             
             self.valid = (self.numberField.valid && self.expirationField.valid && self.cvcField.valid)
             
-//            delegate?.fieldChangedValue(self.numberField, valid: valid)
+            //            delegate?.fieldChangedValue(self.numberField, valid: valid)
             delegate?.paymentFieldChangedValidity(valid)
         } else if textField == self.expirationField {
             
@@ -267,15 +267,16 @@ public class CardPaymentField: CheckoutPaymentFieldView, UITextFieldDelegate {
             
             //delegate?.fieldChangedValue(self.expirationField, valid: valid)
             delegate?.paymentFieldChangedValidity(valid)
-        } else if textField == self.cvcField {
-            self.cvcField.valid = (numberOnly.characters.count == 3)
+        }
+        else if textField == self.cvcField
+        {
+            self.cvcField.valid = (numberOnly.characters.count >= 3)
             
-            if (newString.characters.count <= 3) {
+            if (newString.characters.count <= 4)
+            {
                 textField.text = newString
                 
                 self.valid = (self.numberField.valid && self.expirationField.valid && self.cvcField.valid)
-                
-                //delegate?.fieldChangedValue(self.cvcField, valid: self.cvcField.valid)
                 delegate?.paymentFieldChangedValidity(valid)
             }
             

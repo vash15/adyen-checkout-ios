@@ -56,7 +56,7 @@ public class Checkout {
                     self.publicKey = key
                     completion(publicKey: key, error: nil)
                 } else {
-                    completion(publicKey: nil, error: NSError(domain: AdyenCheckoutErrorDomain, code: 400, userInfo: [NSLocalizedDescriptionKey: "Public key can not be fetched"]))
+                    completion(publicKey: nil, error: NSError(domain: AdyenCheckoutErrorDomain, code: 400, userInfo: [NSLocalizedDescriptionKey: "Public key cannot be fetched"]))
                 }
             }
             catch let error as NSError {

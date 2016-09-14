@@ -97,7 +97,7 @@ public class CheckoutViewController: UIViewController, CheckoutPaymentFieldDeleg
         }
         
         if (isModal) {
-            self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Cancel, target: self, action: Selector("dismiss"))
+            self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Cancel, target: self, action: #selector(CheckoutViewController.dismiss))
         }
         
         //if (!headerView) { headerView = CheckoutHeaderView() }
@@ -136,14 +136,14 @@ public class CheckoutViewController: UIViewController, CheckoutPaymentFieldDeleg
         paymentButton.enabled = false
         //togglePayButton()
         
-        paymentButton.addTarget(self, action: Selector("payButtonPressed"), forControlEvents: .TouchUpInside)
+        paymentButton.addTarget(self, action: #selector(CheckoutViewController.payButtonPressed), forControlEvents: .TouchUpInside)
         
     }
     
     public override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CheckoutViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CheckoutViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
     }
     
     public override func viewDidAppear(animated: Bool) {

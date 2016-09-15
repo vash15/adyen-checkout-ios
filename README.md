@@ -1,4 +1,4 @@
-# AdyenCheckout
+# Adyen Checkout for iOS
 
 [![CI Status](http://img.shields.io/travis/Adyen/AdyenCheckout.svg?style=flat)](https://travis-ci.org/Adyen/AdyenCheckout)
 [![Version](https://img.shields.io/cocoapods/v/AdyenCheckout.svg?style=flat)](http://cocoapods.org/pods/AdyenCheckout)

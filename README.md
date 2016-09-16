@@ -1,6 +1,6 @@
-# AdyenCheckout
+# Adyen Checkout for iOS
 
-[![CI Status](http://img.shields.io/travis/Adyen/AdyenCheckout.svg?style=flat)](https://travis-ci.org/Adyen/AdyenCheckout)
+[![CI Status](http://img.shields.io/travis/Adyen/adyen-checkout-ios.svg?style=flat)](https://travis-ci.org/Adyen/adyen-checkout-ios)
 [![Version](https://img.shields.io/cocoapods/v/AdyenCheckout.svg?style=flat)](http://cocoapods.org/pods/AdyenCheckout)
 
 ## Usage
@@ -105,6 +105,22 @@ if (paymentFieldView.valid) {
 }
 
 ```
+
+### Fetching Public Key
+
+Assign your token to `Checkout.shared.token` and call `Checkout.shared.fetchPublicKey` to retrieve `publicKey` from Adyen.
+
+``` swift
+Checkout.shared.token = "8714279..."
+Checkout.shared.fetchPublicKey { (publicKey, error) in
+    //  Check for `error`.
+    //  ...
+    
+    //  Use `publicKey` (e.g. store in Keychain for later access).
+    //  ...
+}
+```
+
 
 ## Installation
 AdyenCheckout is available through [CocoaPods](http://cocoapods.org). To install

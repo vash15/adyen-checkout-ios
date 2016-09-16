@@ -39,7 +39,7 @@ public class Checkout {
      
      - parameter completion: A closure that will provide the `publicKey` or `error`
      */
-    public func fetchPublickKey(completion: ((publicKey: String?, error: NSError?) -> Void)) {
+    public func fetchPublicKey(completion: ((publicKey: String?, error: NSError?) -> Void)) {
         if (token == nil) {
             completion(publicKey: nil, error: NSError(domain: AdyenCheckoutErrorDomain, code: 404, userInfo: [NSLocalizedDescriptionKey: "Token is not set"]))
             return

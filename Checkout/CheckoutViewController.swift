@@ -62,7 +62,7 @@ public class CheckoutViewController: UIViewController, CheckoutPaymentFieldDeleg
         super.viewDidLoad()
         
         if (Checkout.shared.publicKey == nil) {
-            Checkout.shared.fetchPublickKey({ (publicKey, error) -> Void in
+            Checkout.shared.fetchPublicKey({ (publicKey, error) -> Void in
                 if (error != nil) {
                     self.dismissViewControllerAnimated(true, completion: { () -> Void in
                         let alert = UIAlertView(title: "Error", message: error!.localizedDescription, delegate: nil, cancelButtonTitle: "OK")

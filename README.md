@@ -106,6 +106,22 @@ if (paymentFieldView.valid) {
 
 ```
 
+### Fetching Public Key
+
+Assign your token to `Checkout.shared.token` and call `Checkout.shared.fetchPublicKey` to retrieve `publicKey` from Adyen.
+
+``` swift
+Checkout.shared.token = "8714279..."
+Checkout.shared.fetchPublicKey { (publicKey, error) in
+    //  Check for `error`.
+    //  ...
+    
+    //  Use `publicKey` (e.g. store in Keychain for later access).
+    //  ...
+}
+```
+
+
 ## Installation
 AdyenCheckout is available through [CocoaPods](http://cocoapods.org). To install
 add the following line to your Podfile:

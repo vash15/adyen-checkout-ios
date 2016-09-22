@@ -8,19 +8,19 @@
 
 import UIKit
 
-public class CheckoutTextField: UITextField {
+open class CheckoutTextField: UITextField {
     
-    public var valid = false
-    let placeholderImageView = UIImageView(frame: CGRectMake(5, 0, 32, 20))
+    open var valid = false
+    let placeholderImageView = UIImageView(frame: CGRect(x: 5, y: 0, width: 32, height: 20))
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = UIColor.whiteColor()
+        self.backgroundColor = UIColor.white
         
         self.placeholderImageView.clipsToBounds = true
-        self.placeholderImageView.contentMode = .Center
+        self.placeholderImageView.contentMode = .center
         
-        self.leftViewMode = .Always
+        self.leftViewMode = .always
         let placeholderView = UIView(frame: CGRect(x: 0, y: 0, width: 32+14, height: 20))
         placeholderView.addSubview(self.placeholderImageView)
         self.leftView = placeholderView;
@@ -38,15 +38,15 @@ public class CheckoutTextField: UITextField {
 
 @objc
 public protocol CheckoutPaymentFieldDelegate {
-    func paymentFieldChangedValidity(valid: Bool)
+    func paymentFieldChangedValidity(_ valid: Bool)
 //    optional func paymentFieldChangedValue(field: CheckoutTextField, valid: Bool)
 }
 
-public class CheckoutPaymentFieldView: UIControl {
-    public var delegate: CheckoutPaymentFieldDelegate?
-    public var valid = false
+open class CheckoutPaymentFieldView: UIControl {
+    open var delegate: CheckoutPaymentFieldDelegate?
+    open var valid = false
     
-    public func paymentData() -> PaymentData {
+    open func paymentData() -> PaymentData {
         fatalError("Subclass should implement")
     }
 

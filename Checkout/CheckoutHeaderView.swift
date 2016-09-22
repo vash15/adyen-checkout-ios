@@ -8,16 +8,16 @@
 
 import UIKit
 
-public class CheckoutHeaderView: UIView {
+open class CheckoutHeaderView: UIView {
     
-    public var logoImage: UIImage? // default is nil
-    public var titleText: String?
-    public var subtitleText: String?
-    public var textColor = UIColor?()
+    open var logoImage: UIImage? // default is nil
+    open var titleText: String?
+    open var subtitleText: String?
+    open var textColor: UIColor? = UIColor()
     
     let imageView = UIImageView()
-    public let titleLabel = UILabel()
-    public let detailLabel = UILabel()
+    open let titleLabel = UILabel()
+    open let detailLabel = UILabel()
     
     
     public required init?(coder aDecoder: NSCoder) {
@@ -35,21 +35,21 @@ public class CheckoutHeaderView: UIView {
         commonInit()
     }
     
-    public func commonInit() {
+    open func commonInit() {
         
-        imageView.contentMode = .ScaleAspectFit
+        imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
         self.addSubview(imageView)
         
         titleLabel.textColor = textColor
-        titleLabel.font = UIFont.boldSystemFontOfSize(20)
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 20)
         //titleLabel.textAlignment = .Center
         titleLabel.text = self.titleText
         //titleLabel.backgroundColor = UIColor.redColor()
         self.addSubview(titleLabel)
         
         detailLabel.textColor = textColor
-        detailLabel.font = UIFont.systemFontOfSize(14)
+        detailLabel.font = UIFont.systemFont(ofSize: 14)
         //detailLabel.textAlignment = .Center
         detailLabel.text = self.subtitleText
         //detailLabel.backgroundColor = UIColor.greenColor()
@@ -57,7 +57,7 @@ public class CheckoutHeaderView: UIView {
         
     }
     
-    public override func layoutSubviews() {
+    open override func layoutSubviews() {
         super.layoutSubviews()
         
         
@@ -66,7 +66,7 @@ public class CheckoutHeaderView: UIView {
             if (self.backgroundColor != nil) {
                 isDarkBg = backgroundColor!.isDark()
             }
-            textColor = (isDarkBg) ? UIColor.whiteColor() : UIColor.darkTextColor()
+            textColor = (isDarkBg) ? UIColor.white : UIColor.darkText
         }
         
         titleLabel.textColor = textColor

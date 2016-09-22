@@ -8,12 +8,12 @@
 
 import UIKit
 
-func _bundleImage(name: String) -> UIImage? {
+func _bundleImage(_ name: String) -> UIImage? {
     let imgPrefix = "ady_"
     let path = imgPrefix + name
-    let bundle = NSBundle(forClass: Checkout.self)
+    let bundle = Bundle(for: Checkout.self)
     
-    let img = UIImage(named: path, inBundle: bundle, compatibleWithTraitCollection: nil)
+    let img = UIImage(named: path, in: bundle, compatibleWith: nil)
     return img
 }
 
@@ -26,9 +26,9 @@ extension UIColor {
     class var adyGreenColor:UIColor { return UIColor(hex: "25b72e") }
     
     convenience init(hex: String) {
-        let hex = hex.stringByTrimmingCharactersInSet(NSCharacterSet.alphanumericCharacterSet().invertedSet)
+        let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
         var int = UInt32()
-        NSScanner(string: hex).scanHexInt(&int)
+        Scanner(string: hex).scanHexInt32(&int)
         let a, r, g, b: UInt32
         switch hex.characters.count {
         case 3: // RGB (12-bit)
@@ -49,7 +49,7 @@ extension UIColor {
      :param: lighting percent percentage
      :returns: lighter UIColor
      */
-    func lighterColor(percent : Double) -> UIColor {
+    func lighterColor(_ percent : Double) -> UIColor {
         return colorWithBrightnessFactor(CGFloat(1 + percent));
     }
     
@@ -59,7 +59,7 @@ extension UIColor {
      :param: darking percent percentage
      :returns: darker UIColor
      */
-    func darkerColor(percent : Double) -> UIColor {
+    func darkerColor(_ percent : Double) -> UIColor {
         return colorWithBrightnessFactor(CGFloat(1 - percent));
     }
     
@@ -69,7 +69,7 @@ extension UIColor {
      :param: factor brightness factor
      :returns: modified color
      */
-    func colorWithBrightnessFactor(factor: CGFloat) -> UIColor {
+    func colorWithBrightnessFactor(_ factor: CGFloat) -> UIColor {
         var hue : CGFloat = 0
         var saturation : CGFloat = 0
         var brightness : CGFloat = 0

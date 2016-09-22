@@ -8,9 +8,9 @@
 
 import UIKit
 
-public class CheckoutCardViewController: CheckoutViewController {
+open class CheckoutCardViewController: CheckoutViewController {
     
-    public var showCardholderNameField = true
+    open var showCardholderNameField = true
     
     override public init(checkoutRequest request: CheckoutRequest) {
         super.init(checkoutRequest: request)
@@ -22,14 +22,14 @@ public class CheckoutCardViewController: CheckoutViewController {
     }
     
     
-    public override func viewDidLoad() {
+    open override func viewDidLoad() {
         super.viewDidLoad()
         
         let pfv = (paymentFieldView as! CardPaymentField)
         pfv.showNameField = showCardholderNameField
     }
     
-    public override func payButtonPressed() {
+    open override func payButtonPressed() {
         
         paymentButton.startAnimating()
         

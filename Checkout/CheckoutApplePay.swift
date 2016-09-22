@@ -10,13 +10,13 @@ import Foundation
 import PassKit
 
 /// A Card `PaymentData` object
-public class ApplePayPaymentData: PaymentData {
+open class ApplePayPaymentData: PaymentData {
     
     /// ApplePay payment
     var payment: PKPayment!
 
     
-    public func serialize() -> String {
+    open func serialize() -> String {
 
         
         return ""

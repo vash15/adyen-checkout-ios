@@ -11,14 +11,14 @@ import Foundation
 /**
  The `CheckoutRequest` class encapsulates a request for payment, including information about amount, currency and reference.
  */
-public class CheckoutRequest : NSObject {
+open class CheckoutRequest : NSObject {
     
     /// The payment amount
-    public var amount = 0.00
+    open var amount = 0.00
     
     /// The three-letter ISO 4217 currency code.
-    public var currency = "USD"
+    open var currency = "USD"
     
     /// Merchant reference
-    public var reference: String = ""
+    open var reference: String = ""
 }

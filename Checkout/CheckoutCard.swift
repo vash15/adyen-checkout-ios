@@ -48,7 +48,7 @@ public enum CardType: String {
     /// MARK: Utility functions
     
     var imageName : String {
-        let type = self.rawValue.lowercaseString
+        let type = self.rawValue.lowercased()
         return "card_" + type
     }
     
@@ -83,7 +83,7 @@ public enum CardType: String {
 
 
 /// A Card `PaymentData` object
-public class CardPaymentData: PaymentData {
+open class CardPaymentData: PaymentData {
     /// Card number
     var number: String
     
@@ -103,7 +103,7 @@ public class CardPaymentData: PaymentData {
         self.name = name
     }
     
-    public func serialize() throws -> String {
+    open func serialize() throws -> String {
         var d = [String: String]()
         d["number"] = number.numberOnly()
         d["cvc"] = cvc.numberOnly()
@@ -122,7 +122,7 @@ public class CardPaymentData: PaymentData {
         
         
         do {
-            let JSON = try NSJSONSerialization.dataWithJSONObject(d, options: [])
+            let JSON = try JSONSerialization.data(withJSONObject: d, options: [])
             let data = try Checkout.shared.encryptData(JSON)
             return data
         }
@@ -133,39 +133,40 @@ public class CardPaymentData: PaymentData {
     }
     
     func generationTime() -> String {
-        let df = NSDateFormatter()
-        df.locale = NSLocale(localeIdentifier: "en_US_POSIX")
-        df.calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
-        df.timeZone = NSTimeZone(name: "UTC")
+        let df = DateFormatter()
+        df.locale = Locale(identifier: "en_US_POSIX")
+        df.calendar = Calendar(identifier: Calendar.Identifier.gregorian)
+        df.timeZone = TimeZone(identifier: "UTC")
         df.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
         
-        return df.stringFromDate(NSDate())
+        return df.string(from: Date())
     }
 
 }
 
 
-public class CardValidation {
+open class CardValidation {
     
     
-    static func matchesRegex(regex: String!, text: String!) -> Bool {
+    static func matchesRegex(_ regex: String!, text: String!) -> Bool {
         do {
-            let regex = try NSRegularExpression(pattern: regex, options: [.CaseInsensitive])
+            let regex = try NSRegularExpression(pattern: regex, options: [.caseInsensitive])
             let nsString = text as NSString
-            let match = regex.firstMatchInString(text, options: [], range: NSMakeRange(0, nsString.length))
+            let match = regex.firstMatch(in: text, options: [], range: NSMakeRange(0, nsString.length))
             return (match != nil)
         } catch {
             return false
         }
     }
     
-    public static func luhnCheck(number: String) -> Bool {
+    open static func luhnCheck(_ number: String) -> Bool {
         var sum = 0
-        let digitStrings = number.characters.reverse().map { String($0) }
+        let digitStrings = number.characters.reversed().map { String($0) }
         
-        for tuple in digitStrings.enumerate() {
+        for tuple in digitStrings.enumerated() {
+            
             guard let digit = Int(tuple.element) else { return false }
-            let odd = tuple.index % 2 == 1
+            let odd = tuple.offset % 2 == 1
             
             switch (odd, digit) {
             case (true, 9):
@@ -180,7 +181,7 @@ public class CardValidation {
         return sum % 10 == 0
     }
     
-    public static func checkCardNumber(input: String) -> (type: CardType, formatted: String, valid: Bool) {
+    open static func checkCardNumber(_ input: String) -> (type: CardType, formatted: String, valid: Bool) {
         let numberOnly = input.numberOnly()
         
         var type: CardType = .Unknown
@@ -210,7 +211,7 @@ public class CardValidation {
         return (type, formatted, valid)
     }
     
-    public static func checkExpirationDate(input: String, split: Bool = true) -> (formatted: String, valid: Bool, month: String, year: String) {
+    open static func checkExpirationDate(_ input: String, split: Bool = true) -> (formatted: String, valid: Bool, month: String, year: String) {
         let suffix = (split) ? " / " : ""
         
         let numberOnly = input.numberOnly()
@@ -251,18 +252,18 @@ public class CardValidation {
         }
         
         if year > 0 {
-            let date = NSDate()
-            let calendar = NSCalendar.currentCalendar()
-            let components = calendar.components([.Month, .Year], fromDate: date)
+            let date = Date()
+            let calendar = Calendar.current
+            let components = (calendar as NSCalendar).components([.month, .year], from: date)
             let currentYear = components.year
             let currentMonth = components.month
             
             // year already has "20"+ here
-            if (year == currentYear && month < currentMonth) {
+            if (year == currentYear! && month < currentMonth!) {
                 valid = false
-            } else if (year == currentYear && validMonth && month >= currentMonth) {
+            } else if (year == currentYear! && validMonth && month >= currentMonth!) {
                 valid = true
-            } else if (year > currentYear && validMonth) {
+            } else if (year > currentYear! && validMonth) {
                 valid = true
             } else {
                 valid = false
@@ -272,4 +273,21 @@ public class CardValidation {
         return (formatted, valid, String(month), String(year))
     }
     
+}
+
+extension String {
+    subscript(i: Int) -> String {
+        guard i >= 0 && i < characters.count else { return "" }
+        return String(self[index(startIndex, offsetBy: i)])
+    }
+    
+    subscript(range: Range<Int>) -> String {
+        let lowerIndex = index(startIndex, offsetBy: max(0,range.lowerBound), limitedBy: endIndex) ?? endIndex
+        return substring(with: lowerIndex..<(index(lowerIndex, offsetBy: range.upperBound - range.lowerBound, limitedBy: endIndex) ?? endIndex))
+    }
+    
+    subscript(range: ClosedRange<Int>) -> String {
+        let lowerIndex = index(startIndex, offsetBy: max(0,range.lowerBound), limitedBy: endIndex) ?? endIndex
+        return substring(with: lowerIndex..<(index(lowerIndex, offsetBy: range.upperBound - range.lowerBound + 1, limitedBy: endIndex) ?? endIndex))
+    }
 }

@@ -9,9 +9,9 @@
 import UIKit
 
 
-public class CheckoutPaymentButton: UIButton {
+open class CheckoutPaymentButton: UIButton {
     
-    let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
+    let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
     
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -28,7 +28,7 @@ public class CheckoutPaymentButton: UIButton {
         commonInit()
     }
     
-    public func commonInit() {
+    open func commonInit() {
         
         if (self.frame.size.height == 0) {
             self.frame.size.height = 44
@@ -36,7 +36,7 @@ public class CheckoutPaymentButton: UIButton {
         
         self.layer.cornerRadius = 3
         self.backgroundColor = UIColor.adyGreenColor
-        self.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        self.setTitleColor(UIColor.white, for: UIControlState())
         
         //let title = "Pay " + currencySymbol() + " " + String(self.amount)
         //btn.setTitle(title, forState: .Normal)
@@ -45,7 +45,7 @@ public class CheckoutPaymentButton: UIButton {
         stopAnimating()
     }
     
-    public override func layoutSubviews() {
+    open override func layoutSubviews() {
         super.layoutSubviews()
         
         if (self.frame.size.height == 0) {
@@ -75,15 +75,15 @@ public class CheckoutPaymentButton: UIButton {
         
     }
     
-    public func startAnimating() {
+    open func startAnimating() {
         titleLabel?.layer.opacity = 0.0;
-        activityIndicator.hidden = false
+        activityIndicator.isHidden = false
         activityIndicator.startAnimating()
     }
     
-    public func stopAnimating() {
+    open func stopAnimating() {
         activityIndicator.stopAnimating()
-        activityIndicator.hidden = true
+        activityIndicator.isHidden = true
         titleLabel?.layer.opacity = 1.0;
     }
     

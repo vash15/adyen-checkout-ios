@@ -10,7 +10,7 @@ import Foundation
 import Security
 //import CommonCrypto
 
-public class ADYCryptor {
+open class ADYCryptor {
     static let prefix = "adyenan0_1_1"
     static let separator = "$"
     static let ivLength = 12
@@ -32,7 +32,7 @@ public class ADYCryptor {
      *    - a Payload of iv and cipherText, base64 encoded
      *
      */
-    public class func encrypt(data: NSData, keyInHex: String) -> String? {
+    open class func encrypt(_ data: Data, keyInHex: String) -> String? {
         
         let key = secureRandomData(key256Length)
         let iv = secureRandomData(ivLength)
@@ -52,34 +52,37 @@ public class ADYCryptor {
         // - a separator
         // - a Payload of iv and cipherText, base64 encoded
         let payload = NSMutableData();
-        payload.appendData(iv)
-        payload.appendData(cipherText)
+        payload.append(iv)
+        payload.append(cipherText)
         
         
         //NSString *result = nil;
         
         let fullPrefix = (prefix.characters.count == 0) ? "" : "\(prefix)\(separator)"
         
-        let encryptedKeyB64 = encryptedKey.base64EncodedStringWithOptions([])
-        let payloadB64 = payload.base64EncodedStringWithOptions([])
+        let encryptedKeyB64 = encryptedKey.base64EncodedString(options: [])
+        let payloadB64 = payload.base64EncodedString(options: [])
         
         let result = "\(fullPrefix)\(encryptedKeyB64)\(separator)\(payloadB64)"
         return result;
     }
     
-    public class func secureRandomData(length: Int) -> NSData {
-        let data = NSMutableData(length: length)
-        SecRandomCopyBytes(kSecRandomDefault, length, UnsafeMutablePointer<UInt8>(data!.mutableBytes))
-        return data!
+    open class func secureRandomData(_ length: Int) -> Data {
+        var keyData = Data(count: length)
+        let _ = keyData.withUnsafeMutableBytes { mutableBytes in
+            SecRandomCopyBytes(kSecRandomDefault, keyData.count, mutableBytes)
+        }
+        
+        return keyData
     }
     
-    public class func aesEncrypt(data: NSData, key: NSData
-        , iv: NSData) -> NSData? {
+    open class func aesEncrypt(_ data: Data, key: Data
+        , iv: Data) -> Data? {
         return TKAESCCMCryptor.encrypt(data, withKey: key, iv: iv)
 
     }
     
-    public class func rsaEncrypt(data: NSData, keyInHex: String) -> NSData? {
+    open class func rsaEncrypt(_ data: Data, keyInHex: String) -> Data? {
         return TKRSACryptor.encrypt(data, withKeyInHex: keyInHex)
     }
     
@@ -88,37 +91,42 @@ public class ADYCryptor {
 
 
 extension String {
-    
-    /// Create NSData from hexadecimal string representation
-    ///
-    /// This takes a hexadecimal representation and creates a NSData object. Note, if the string has any spaces, those are removed. Also if the string started with a '<' or ended with a '>', those are removed, too. This does no validation of the string to ensure it's a valid hexadecimal string
-    ///
-    /// The use of `strtoul` inspired by Martin R at http://stackoverflow.com/a/26284562/1271826
-    ///
-    /// - returns: NSData represented by this hexadecimal string. Returns nil if string contains characters outside the 0-9 and a-f range.
-    
-    func dataFromHexadecimalString() -> NSData? {
-        let trimmedString = self.stringByTrimmingCharactersInSet(NSCharacterSet(charactersInString: "<> ")).stringByReplacingOccurrencesOfString(" ", withString: "")
+
+    var hexadecimal: Data? {
+        var data = Data(capacity: characters.count / 2)
         
-        // make sure the cleaned up string consists solely of hex digits, and that we have even number of them
+        let regex = try! NSRegularExpression(pattern: "[0-9a-f]{1,2}", options: .caseInsensitive)
+        regex.enumerateMatches(in: self, options: [], range: NSMakeRange(0, characters.count)) { match, flags, stop in
+            let byteString = (self as NSString).substring(with: match!.range)
+            var num = UInt8(byteString, radix: 16)!
+            data.append(&num, count: 1)
+        }
         
-        let regex = try! NSRegularExpression(pattern: "^[0-9a-f]*$", options: .CaseInsensitive)
-        
-        let found = regex.firstMatchInString(trimmedString, options: [], range: NSMakeRange(0, trimmedString.characters.count))
-        if found == nil || found?.range.location == NSNotFound || trimmedString.characters.count % 2 != 0 {
+        guard data.count > 0 else {
             return nil
         }
         
-        // everything ok, so now let's build NSData
-        
-        let data = NSMutableData(capacity: trimmedString.characters.count / 2)
-        
-        for var index = trimmedString.startIndex; index < trimmedString.endIndex; index = index.successor().successor() {
-            let byteString = trimmedString.substringWithRange(Range<String.Index>(start: index, end: index.successor().successor()))
-            let num = UInt8(byteString.withCString { strtoul($0, nil, 16) })
-            data?.appendBytes([num] as [UInt8], length: 1)
-        }
-        
         return data
+    }
+    
+    init?(hexadecimal string: String) {
+        guard let data = string.hexadecimal else { return nil }
+        
+        self.init(data: data, encoding: .utf8)
+    }
+    
+    var hexadecimalString: String? {
+        return data(using: .utf8)?.hexadecimal
+    }
+}
+
+extension Data {
+    
+    /// Create hexadecimal string representation of `Data` object.
+    ///
+    /// - returns: `String` representation of this `Data` object.
+    
+    var hexadecimal: String {
+        return map { String(format: "%02x", $0) }.joined(separator: "")
     }
 }

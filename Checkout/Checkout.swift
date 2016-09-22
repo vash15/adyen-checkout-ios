@@ -16,51 +16,51 @@ public protocol PaymentData {
 }
 
 
-public class Checkout {
+open class Checkout {
     
     /// Use test Adyen Backend. Default: false
-    public var useTestBackend = false
+    open var useTestBackend = false
     
     /// Token to fetch the PublicKey
-    public var token: String?
+    open var token: String?
     
     /// Public Key (will be fetched by token)
-    public var publicKey: String?
+    open var publicKey: String?
     
     
-    public static let version = "1.0.0"
+    open static let version = "1.0.0"
     
-    public static let shared = Checkout()
+    open static let shared = Checkout()
     
-    private init (){}
+    fileprivate init (){}
 
     /**
      Fetches the Public encryption key from Adyen backend
      
      - parameter completion: A closure that will provide the `publicKey` or `error`
      */
-    public func fetchPublicKey(completion: ((publicKey: String?, error: NSError?) -> Void)) {
+    open func fetchPublicKey(_ completion: @escaping ((_ publicKey: String?, _ error: NSError?) -> Void)) {
         if (token == nil) {
-            completion(publicKey: nil, error: NSError(domain: AdyenCheckoutErrorDomain, code: 404, userInfo: [NSLocalizedDescriptionKey: "Token is not set"]))
+            completion(nil, NSError(domain: AdyenCheckoutErrorDomain, code: 404, userInfo: [NSLocalizedDescriptionKey: "Token is not set"]))
             return
         }
         
         let host = (useTestBackend) ? "test" : "live"
         let url = "https://\(host).adyen.com/hpp/cse/\(token!)/json.shtml"
 
-        let request = NSURLRequest(URL: NSURL(string: url)!)
-        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (resp, data, error) -> Void in
+        let request = URLRequest(url: URL(string: url)!)
+        NSURLConnection.sendAsynchronousRequest(request, queue: OperationQueue.main) { (resp, data, error) -> Void in
             do {
-                let jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: [])
-                if let key = jsonResult["publicKey"] as? String {
+                let jsonResult = try JSONSerialization.jsonObject(with: data!, options: [])
+                if let key = (jsonResult as? [String: AnyObject])?["publicKey"] as? String {
                     self.publicKey = key
-                    completion(publicKey: key, error: nil)
+                    completion(key, nil)
                 } else {
-                    completion(publicKey: nil, error: NSError(domain: AdyenCheckoutErrorDomain, code: 400, userInfo: [NSLocalizedDescriptionKey: "Public key cannot be fetched"]))
+                    completion(nil, NSError(domain: AdyenCheckoutErrorDomain, code: 400, userInfo: [NSLocalizedDescriptionKey: "Public key cannot be fetched"]))
                 }
             }
             catch let error as NSError {
-                completion(publicKey: nil, error: error)
+                completion(nil, error)
             }
         }
     }
@@ -72,7 +72,7 @@ public class Checkout {
      - returns: String
      - throws: `NSError` of type `AdyenCheckoutErrorDomain`
      */
-    public func encryptData(data: NSData) throws -> String {
+    open func encryptData(_ data: Data) throws -> String {
         
         if (publicKey == nil) {
             throw NSError(domain: AdyenCheckoutErrorDomain, code: 404, userInfo: [NSLocalizedDescriptionKey: "Public key not set"])
@@ -92,11 +92,11 @@ public class Checkout {
      - parameter price: Price (5.99)
      - parameter currency: A currency identifier (EUR)
      */
-    public func formatPrice(price: Double, currency: String) -> String {
-        let locale = NSLocale(localeIdentifier: NSLocale.localeIdentifierFromComponents([NSLocaleCurrencyCode: currency]))
+    open func formatPrice(_ price: Double, currency: String) -> String {
+        let locale = Locale(identifier: Locale.identifier(fromComponents: [NSLocale.Key.currencyCode.rawValue: currency]))
         
-        let formatter = NSNumberFormatter()
-        formatter.numberStyle = .CurrencyStyle
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
         formatter.locale = locale
         
         // US$ -> $
@@ -104,28 +104,28 @@ public class Checkout {
             formatter.currencySymbol = "$"
         }
         
-        return formatter.stringFromNumber(price)! // "123,44 €"
+        return formatter.string(from: NSNumber(value: price))! // "123,44 €"
     }
     
 }
 
-//MARK - Extentions
+// MARK - Extentions
 
 extension String {
     
-    subscript (i: Int) -> Character {
-        return self[self.startIndex.advancedBy(i)]
-    }
-    
-    subscript (i: Int) -> String {
-        return String(self[i] as Character)
-    }
-    
-    subscript (r: Range<Int>) -> String {
-        return substringWithRange(Range(start: startIndex.advancedBy(r.startIndex), end: startIndex.advancedBy(r.endIndex)))
-    }
-    
+//    subscript (i: Int) -> Character {
+//        return self[self.characters.index(self.startIndex, offsetBy: i)]
+//    }
+//    
+//    subscript (i: Int) -> String {
+//        return String(self[i] as Character)
+//    }
+//    
+//    subscript (r: Range<Int>) -> String {
+//        return substring(with: (characters.index(startIndex, offsetBy: r.lowerBound) ..< characters.index(startIndex, offsetBy: r.upperBound)))
+//    }
+//    
     func numberOnly() -> String {
-        return self.stringByReplacingOccurrencesOfString("[^0-9]", withString: "", options: .RegularExpressionSearch)
+        return self.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
     }
 }

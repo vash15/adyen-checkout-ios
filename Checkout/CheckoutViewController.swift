@@ -11,40 +11,40 @@ import UIKit
 public enum CheckoutAuthorizationStatus : Int {
     
     /// Merchant auth'd (or expects to auth) the transaction successfully.
-    case Success
+    case success
     
     /// Merchant failed to auth the transaction.
-    case Failure
+    case failure
 }
 
 
 public protocol CheckoutViewControllerDelegate: class {
-    func checkoutViewController(controller: CheckoutViewController, authorizedPayment payment: CheckoutPayment)
-    func checkoutViewController(controller: CheckoutViewController, failedWithError error: NSError)
+    func checkoutViewController(_ controller: CheckoutViewController, authorizedPayment payment: CheckoutPayment)
+    func checkoutViewController(_ controller: CheckoutViewController, failedWithError error: NSError)
 }
 
-public class CheckoutViewController: UIViewController, CheckoutPaymentFieldDelegate {
+open class CheckoutViewController: UIViewController, CheckoutPaymentFieldDelegate {
     
-    public var request: CheckoutRequest!
-    public weak var delegate: CheckoutViewControllerDelegate?
+    open var request: CheckoutRequest!
+    open weak var delegate: CheckoutViewControllerDelegate?
     
     /// Logo image to be shown in a header view
-    public var logoImage: UIImage?
+    open var logoImage: UIImage?
     
     /// Title to be shown in a header view
-    public var titleText: String?
-    public var subtitleText: String?
+    open var titleText: String?
+    open var subtitleText: String?
     
-    public var backgroundColor = UIColor(red: 0.306, green: 0.573, blue: 0.875, alpha: 1)
-    public var titleColor = UIColor.whiteColor()
+    open var backgroundColor = UIColor(red: 0.306, green: 0.573, blue: 0.875, alpha: 1)
+    open var titleColor = UIColor.white
     
     
     
     var oldKeyboardRect = CGRect.zero
     
-    public var headerView: CheckoutHeaderView!
-    public var paymentFieldView: CheckoutPaymentFieldView!
-    public var paymentButton: CheckoutPaymentButton!
+    open var headerView: CheckoutHeaderView!
+    open var paymentFieldView: CheckoutPaymentFieldView!
+    open var paymentButton: CheckoutPaymentButton!
     
     /// Initializes and returns a newly created view controller for the supplied payment request.
     /// It is your responsibility to present and dismiss the view controller using the
@@ -58,13 +58,13 @@ public class CheckoutViewController: UIViewController, CheckoutPaymentFieldDeleg
         super.init(coder: aDecoder)
     }
     
-    public override func viewDidLoad() {
+    open override func viewDidLoad() {
         super.viewDidLoad()
         
         if (Checkout.shared.publicKey == nil) {
             Checkout.shared.fetchPublicKey({ (publicKey, error) -> Void in
                 if (error != nil) {
-                    self.dismissViewControllerAnimated(true, completion: { () -> Void in
+                    self.dismiss(animated: true, completion: { () -> Void in
                         let alert = UIAlertView(title: "Error", message: error!.localizedDescription, delegate: nil, cancelButtonTitle: "OK")
                         alert.show()
                     })
@@ -75,14 +75,14 @@ public class CheckoutViewController: UIViewController, CheckoutPaymentFieldDeleg
         
         
         //self.edgesForExtendedLayout = .None
-        self.view.backgroundColor = UIColor.whiteColor()
+        self.view.backgroundColor = UIColor.white
         
         let isDarkBg = backgroundColor.isDark()
-        titleColor = (isDarkBg) ? UIColor.whiteColor() : UIColor.darkTextColor()
+        titleColor = (isDarkBg) ? UIColor.white : UIColor.darkText
         
-        self.navigationController?.navigationBar.translucent = false
+        self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.barTintColor = backgroundColor.darkerColor(0.10)
-        self.navigationController?.navigationBar.barStyle = (isDarkBg) ? .Black : .Default
+        self.navigationController?.navigationBar.barStyle = (isDarkBg) ? .black : .default
         self.setNeedsStatusBarAppearanceUpdate()
         
         
@@ -97,7 +97,7 @@ public class CheckoutViewController: UIViewController, CheckoutPaymentFieldDeleg
         }
         
         if (isModal) {
-            self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Cancel, target: self, action: #selector(CheckoutViewController.dismiss))
+            self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(CheckoutViewController.dismissMe))
         }
         
         //if (!headerView) { headerView = CheckoutHeaderView() }
@@ -119,8 +119,8 @@ public class CheckoutViewController: UIViewController, CheckoutPaymentFieldDeleg
         self.view.addSubview(paymentButton)
         
         
-        headerView.hidden = (self.view.bounds.height < 500)
-        if headerView.hidden {
+        headerView.isHidden = (self.view.bounds.height < 500)
+        if headerView.isHidden {
             self.navigationItem.title = self.titleText
         }
         
@@ -131,37 +131,37 @@ public class CheckoutViewController: UIViewController, CheckoutPaymentFieldDeleg
         
         let formattedPrice = Checkout.shared.formatPrice(request.amount, currency: request.currency)
         let title = "Pay \(formattedPrice)"
-        paymentButton.setTitle(title, forState: .Normal)
+        paymentButton.setTitle(title, for: UIControlState())
         
-        paymentButton.enabled = false
+        paymentButton.isEnabled = false
         //togglePayButton()
         
-        paymentButton.addTarget(self, action: #selector(CheckoutViewController.payButtonPressed), forControlEvents: .TouchUpInside)
+        paymentButton.addTarget(self, action: #selector(CheckoutViewController.payButtonPressed), for: .touchUpInside)
         
     }
     
-    public override func viewWillAppear(animated: Bool) {
+    open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CheckoutViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CheckoutViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(CheckoutViewController.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(CheckoutViewController.keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
-    public override func viewDidAppear(animated: Bool) {
+    open override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let endAlpha:CGFloat = self.paymentButton.enabled ? 1.0 : 0.5
+        let endAlpha:CGFloat = self.paymentButton.isEnabled ? 1.0 : 0.5
         
-        UIView.animateWithDuration(0.3, delay: 0, options: .CurveEaseInOut, animations: { () -> Void in
+        UIView.animate(withDuration: 0.3, delay: 0, options: UIViewAnimationOptions(), animations: { () -> Void in
             self.paymentButton.alpha = endAlpha
             }, completion: nil)
     }
     
-    public override func viewWillDisappear(animated: Bool) {
+    open override func viewWillDisappear(_ animated: Bool) {
         self.view.endEditing(true)
         super.viewWillAppear(animated)
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
     
-    public override func viewWillLayoutSubviews() {
+    open override func viewWillLayoutSubviews() {
         headerView.logoImage = logoImage
         headerView.titleText = titleText
         headerView.subtitleText = (subtitleText != nil) ? subtitleText : request.reference
@@ -193,7 +193,8 @@ public class CheckoutViewController: UIViewController, CheckoutPaymentFieldDeleg
         paymentButton.frame.origin.y = btnY
     }
     
-    func relayoutViewsWithKeyboard(var keyboardRect: CGRect, animationDuration: Float) {
+    func relayoutViewsWithKeyboard(_ keyboardRect: CGRect, animationDuration: Float) {
+        var keyboardRect = keyboardRect
         if (oldKeyboardRect == keyboardRect) {
             return
         }
@@ -205,11 +206,11 @@ public class CheckoutViewController: UIViewController, CheckoutPaymentFieldDeleg
         oldKeyboardRect = keyboardRect
         
         
-        if (!headerView.hidden) {
+        if (!headerView.isHidden) {
             if (keyboardRect.origin.y > 0) {
                 var kbdHeight = keyboardRect.size.height
                 
-                if (UIDevice.currentDevice().userInterfaceIdiom == .Pad && kbdHeight > 200) {
+                if (UIDevice.current.userInterfaceIdiom == .pad && kbdHeight > 200) {
                     kbdHeight = 200
                 }
                 
@@ -232,50 +233,50 @@ public class CheckoutViewController: UIViewController, CheckoutPaymentFieldDeleg
     
     
     
-    func keyboardWillShow(notification: NSNotification) {
-        guard let userInfo = notification.userInfo,
-            keyboardRect = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.CGRectValue(),
-            duration = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.floatValue else {
+    func keyboardWillShow(_ notification: Notification) {
+        guard let userInfo = (notification as NSNotification).userInfo,
+            let keyboardRect = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
+            let duration = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.floatValue else {
                 return
         }
         
-        relayoutViewsWithKeyboard(self.view.convertRect(keyboardRect, fromView: nil), animationDuration: duration)
+        relayoutViewsWithKeyboard(self.view.convert(keyboardRect, from: nil), animationDuration: duration)
         
     }
     
-    func keyboardWillHide(notification: NSNotification) {
-        guard let userInfo = notification.userInfo,
-            keyboardRect = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.CGRectValue(),
-            duration = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.floatValue else {
+    func keyboardWillHide(_ notification: Notification) {
+        guard let userInfo = (notification as NSNotification).userInfo,
+            let keyboardRect = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
+            let duration = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.floatValue else {
                 return
         }
         
-        relayoutViewsWithKeyboard(self.view.convertRect(keyboardRect, fromView: nil), animationDuration: duration)
+        relayoutViewsWithKeyboard(self.view.convert(keyboardRect, from: nil), animationDuration: duration)
     }
     
-    override public func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return (backgroundColor.isDark()) ? .LightContent : .Default;
+    override open var preferredStatusBarStyle : UIStatusBarStyle {
+        return (backgroundColor.isDark()) ? .lightContent : .default;
     }
     
-    public func dismiss() {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    open func dismissMe() {
+        self.dismiss(animated: true, completion: nil)
     }
     
     func togglePayButton() {
         //        let startAlpha = self.paymentButton.enabled ? 1.0 : 0.5
-        let endAlpha:CGFloat = self.paymentButton.enabled ? 1.0 : 0.5
-        UIView.animateWithDuration(0.4) { () -> Void in
+        let endAlpha:CGFloat = self.paymentButton.isEnabled ? 1.0 : 0.5
+        UIView.animate(withDuration: 0.4, animations: { () -> Void in
             self.paymentButton.alpha = endAlpha
-        }
+        }) 
     }
     
-    public func paymentFieldChangedValidity(valid: Bool) {
-        self.paymentButton.enabled = self.paymentFieldView.valid
+    open func paymentFieldChangedValidity(_ valid: Bool) {
+        self.paymentButton.isEnabled = self.paymentFieldView.valid
         togglePayButton()
     }
     
         
-    public func payButtonPressed() {
+    open func payButtonPressed() {
         
     }
     

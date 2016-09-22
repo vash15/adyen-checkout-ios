@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class CardNumberField: CheckoutTextField {
+open class CardNumberField: CheckoutTextField {
     var card = CardType.Unknown {
         didSet {
             resetCard()
@@ -17,13 +17,13 @@ public class CardNumberField: CheckoutTextField {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.keyboardType = .NumberPad
+        self.keyboardType = .numberPad
         self.placeholder = "Card number"
         
         
         let pIV = self.placeholderImageView
         
-        pIV.layer.borderColor = UIColor.adyTextGreyColor.CGColor
+        pIV.layer.borderColor = UIColor.adyTextGreyColor.cgColor
         
         pIV.layer.borderWidth = 1
         pIV.layer.cornerRadius = 2
@@ -31,16 +31,16 @@ public class CardNumberField: CheckoutTextField {
     }
     func resetCard() {
         let img = _bundleImage(card.imageName)
-        UIView.transitionWithView(self.placeholderImageView, duration: 0.2, options: .TransitionCrossDissolve, animations: { () -> Void in
+        UIView.transition(with: self.placeholderImageView, duration: 0.2, options: .transitionCrossDissolve, animations: { () -> Void in
             self.placeholderImageView.image = img
             }, completion: nil)
     }
 }
 
-public class CardExpirationField: CheckoutTextField {
+open class CardExpirationField: CheckoutTextField {
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.keyboardType = .NumberPad
+        self.keyboardType = .numberPad
         self.placeholder = "MM/YY"
         
         let img = _bundleImage("expiration_date")
@@ -48,26 +48,26 @@ public class CardExpirationField: CheckoutTextField {
         self.placeholderImageView.image = img
         
         // Nice thingie - adding a current date on top of image
-        let date = NSDate()
-        let calendar = NSCalendar.currentCalendar()
-        let components = calendar.components(.Day, fromDate: date)
+        let date = Date()
+        let calendar = Calendar.current
+        let components = (calendar as NSCalendar).components(.day, from: date)
         
         let dayLabel = UILabel(frame: CGRect(x: 4, y: 4, width: self.placeholderImageView.bounds.size.width, height: 20))
-        dayLabel.backgroundColor = UIColor.clearColor()
-        dayLabel.textAlignment = .Center
+        dayLabel.backgroundColor = UIColor.clear
+        dayLabel.textAlignment = .center
         dayLabel.textColor = UIColor.adyTextGreyColor
-        dayLabel.font = UIFont.systemFontOfSize(10)
-        dayLabel.text = String(components.day)
+        dayLabel.font = UIFont.systemFont(ofSize: 10)
+        dayLabel.text = String(describing: components.day)
         self.placeholderImageView.addSubview(dayLabel)
     }
 }
 
-public class CardCvcField: CheckoutTextField {
+open class CardCvcField: CheckoutTextField {
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.keyboardType = .NumberPad
+        self.keyboardType = .numberPad
         self.placeholder = "CVC"
-        self.secureTextEntry = true
+        self.isSecureTextEntry = true
         
         let img = _bundleImage("cvc_code")
         self.placeholderImageView.clipsToBounds = false
@@ -76,11 +76,11 @@ public class CardCvcField: CheckoutTextField {
     }
 }
 
-public class CardNameField: CheckoutTextField {
+open class CardNameField: CheckoutTextField {
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.keyboardType = .ASCIICapable
-        self.autocorrectionType = .No
+        self.keyboardType = .asciiCapable
+        self.autocorrectionType = .no
         self.placeholder = "Card holder name"
         
         let img = _bundleImage("cardholder")
@@ -89,19 +89,19 @@ public class CardNameField: CheckoutTextField {
     }
 }
 
-public class CardPaymentField: CheckoutPaymentFieldView, UITextFieldDelegate {
+open class CardPaymentField: CheckoutPaymentFieldView, UITextFieldDelegate {
     
     
-    public var showNameField = true
+    open var showNameField = true
     
     let sidePadding:CGFloat = 8;
     let fieldPadding:CGFloat = 2;
     let fieldHeight:CGFloat = 44;
     
-    public let numberField = CardNumberField(frame: CGRect.zero)
-    public let expirationField = CardExpirationField(frame: CGRect.zero)
-    public let cvcField = CardCvcField(frame: CGRect.zero)
-    public let nameField = CardNameField(frame: CGRect.zero)
+    open let numberField = CardNumberField(frame: CGRect.zero)
+    open let expirationField = CardExpirationField(frame: CGRect.zero)
+    open let cvcField = CardCvcField(frame: CGRect.zero)
+    open let nameField = CardNameField(frame: CGRect.zero)
     
     let topLine = UIView(frame: CGRect.zero)
     let middleLine = UIView(frame: CGRect.zero)
@@ -122,7 +122,7 @@ public class CardPaymentField: CheckoutPaymentFieldView, UITextFieldDelegate {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.backgroundColor = UIColor.whiteColor()
+        self.backgroundColor = UIColor.white
         
         numberField.delegate = self
         expirationField.delegate = self
@@ -151,7 +151,7 @@ public class CardPaymentField: CheckoutPaymentFieldView, UITextFieldDelegate {
         self.layoutSubviews()
     }
     
-    public override func paymentData() -> PaymentData {
+    open override func paymentData() -> PaymentData {
         // Consider if this method should validate inputs and be able to throw
         
         let number = numberField.text ?? ""
@@ -167,7 +167,7 @@ public class CardPaymentField: CheckoutPaymentFieldView, UITextFieldDelegate {
         super.init(coder: aDecoder)
     }
     
-    public override func layoutSubviews() {
+    open override func layoutSubviews() {
         guard let sView = self.superview else { return }
         
         //    public override func willMoveToSuperview(newSuperview: UIView?) {
@@ -192,8 +192,8 @@ public class CardPaymentField: CheckoutPaymentFieldView, UITextFieldDelegate {
         frame.size.width -= sidePadding*2
         
         if (showNameField) {
-            nameField.hidden = false
-            middleLine2.hidden = false
+            nameField.isHidden = false
+            middleLine2.isHidden = false
             
             nameField.frame = frame
             
@@ -202,8 +202,8 @@ public class CardPaymentField: CheckoutPaymentFieldView, UITextFieldDelegate {
             
             frame.origin.y += frame.size.height + fieldPadding
         } else {
-            nameField.hidden = true
-            middleLine2.hidden = true
+            nameField.isHidden = true
+            middleLine2.isHidden = true
         }
         
         numberField.frame = frame
@@ -235,8 +235,8 @@ public class CardPaymentField: CheckoutPaymentFieldView, UITextFieldDelegate {
         self.frame.size.height = totalHeight
     }
     
-    public func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        let newString = (textField.text! as NSString).stringByReplacingCharactersInRange(range, withString: string)
+    open func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let newString = (textField.text! as NSString).replacingCharacters(in: range, with: string)
         let numberOnly = newString.numberOnly()
         
         let isDeleating = (string.characters.count == 0 && range.length == 1)
@@ -285,19 +285,19 @@ public class CardPaymentField: CheckoutPaymentFieldView, UITextFieldDelegate {
         return false
     }
     
-    public func textFieldDidBeginEditing(textField: UITextField) {
+    open func textFieldDidBeginEditing(_ textField: UITextField) {
         if (textField == self.numberField) {
-            textField.textColor = UIColor.darkTextColor()
+            textField.textColor = UIColor.darkText
         }
     }
     
-    public func textFieldDidEndEditing(textField: UITextField) {
+    open func textFieldDidEndEditing(_ textField: UITextField) {
         if (textField == self.numberField && textField.text != nil) {
             let (_, _, valid) = CardValidation.checkCardNumber(textField.text!)
-            textField.textColor = (valid) ? UIColor.darkTextColor() : UIColor.redColor()
+            textField.textColor = (valid) ? UIColor.darkText : UIColor.red
         } else if (textField == self.expirationField && textField.text != nil) {
             let (_, valid, _, _) = CardValidation.checkExpirationDate(textField.text!, split: true)
-            textField.textColor = (valid) ? UIColor.darkTextColor() : UIColor.redColor()
+            textField.textColor = (valid) ? UIColor.darkText : UIColor.red
         }
     }
     

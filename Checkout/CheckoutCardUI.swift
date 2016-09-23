@@ -50,14 +50,16 @@ open class CardExpirationField: CheckoutTextField {
         // Nice thingie - adding a current date on top of image
         let date = Date()
         let calendar = Calendar.current
-        let components = (calendar as NSCalendar).components(.day, from: date)
+        let components = calendar.dateComponents([.day], from: date)
         
         let dayLabel = UILabel(frame: CGRect(x: 4, y: 4, width: self.placeholderImageView.bounds.size.width, height: 20))
         dayLabel.backgroundColor = UIColor.clear
         dayLabel.textAlignment = .center
         dayLabel.textColor = UIColor.adyTextGreyColor
         dayLabel.font = UIFont.systemFont(ofSize: 10)
-        dayLabel.text = String(describing: components.day)
+        if let day = components.day {
+            dayLabel.text = String(day)
+        }
         self.placeholderImageView.addSubview(dayLabel)
     }
 }

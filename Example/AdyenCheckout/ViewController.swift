@@ -56,7 +56,7 @@ class ViewController: UITableViewController, CheckoutViewControllerDelegate {
             "title": "AUD",
             "amount": 4.99,
             "currency": "AUD",
-            "color": UIColor.darkGrayColor()
+            "color": UIColor.darkGray
         ],
 //        [
 //            "mode": "push",
@@ -66,13 +66,9 @@ class ViewController: UITableViewController, CheckoutViewControllerDelegate {
 //        ]
     ]
 
-    func delay(delay: Double, closure:()->()) {
-        dispatch_after(
-            dispatch_time(
-                DISPATCH_TIME_NOW,
-                Int64(delay * Double(NSEC_PER_SEC))
-            ),
-            dispatch_get_main_queue(), closure)
+    func delay(_ delay: Double, closure:@escaping ()->()) {
+        DispatchQueue.main.asyncAfter(
+            deadline: DispatchTime.now() + Double(Int64(delay * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: closure)
     }
 
     override func viewDidLoad() {
@@ -92,11 +88,11 @@ class ViewController: UITableViewController, CheckoutViewControllerDelegate {
 
         delay(0.5) {
             self.tableView(self.tableView,
-                           didSelectRowAtIndexPath: NSIndexPath(forRow: 0, inSection: 0))
+                           didSelectRowAt: IndexPath(row: 0, section: 0))
         }
     }
 
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
 
     }
 
@@ -105,24 +101,24 @@ class ViewController: UITableViewController, CheckoutViewControllerDelegate {
         // Dispose of any resources that can be recreated.
     }
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.items.count
     }
 
-    override func tableView(tableView: UITableView,
-                            cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView,
+                            cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "Cell"
-        var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier)
+        var cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)
         if cell == nil {
-            cell = UITableViewCell(style: .Subtitle, reuseIdentifier: cellIdentifier)
-            cell?.accessoryType = .DisclosureIndicator
+            cell = UITableViewCell(style: .subtitle, reuseIdentifier: cellIdentifier)
+            cell?.accessoryType = .disclosureIndicator
         }
 
-        let item = items[indexPath.row]
+        let item = items[(indexPath as NSIndexPath).row]
 
         if let title = item["title"] as? String {
             cell?.textLabel?.text = title
@@ -130,7 +126,7 @@ class ViewController: UITableViewController, CheckoutViewControllerDelegate {
             cell?.textLabel?.text = ""
         }
 
-        if let amount = item["amount"] as? Double, currency = item["currency"] as? String {
+        if let amount = item["amount"] as? Double, let currency = item["currency"] as? String {
             cell?.detailTextLabel?.text = Checkout.shared.formatPrice(amount, currency: currency)
         } else {
             cell?.detailTextLabel?.text = ""
@@ -139,11 +135,11 @@ class ViewController: UITableViewController, CheckoutViewControllerDelegate {
         return cell!
     }
 
-    override func tableView(tableView: UITableView,
-                            didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    override func tableView(_ tableView: UITableView,
+                            didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
 
-        let item = items[indexPath.row]
+        let item = items[(indexPath as NSIndexPath).row]
 
         let request = CheckoutRequest()
         if let amount = item["amount"] as? Double {
@@ -179,8 +175,8 @@ class ViewController: UITableViewController, CheckoutViewControllerDelegate {
         if let mode = item["mode"] as? String {
             if mode == "modal" {
                 let nc = UINavigationController(rootViewController: vc)
-                nc.modalPresentationStyle = .FormSheet
-                self.presentViewController(nc, animated: true, completion: nil)
+                nc.modalPresentationStyle = .formSheet
+                self.present(nc, animated: true, completion: nil)
             } else if mode == "push" {
                 self.navigationController?.pushViewController(vc, animated: true)
             }
@@ -188,51 +184,51 @@ class ViewController: UITableViewController, CheckoutViewControllerDelegate {
     }
 
     // Custom method to send payment to merchant server
-    func sendPayment(payment: CheckoutPayment,
-                     completionHandler handler: (psp: String?, NSError?) -> Void) {
+    func sendPayment(_ payment: CheckoutPayment,
+                     completionHandler handler: @escaping (_ psp: String?, NSError?) -> Void) {
         var d = [String: AnyObject]()
 
-        d["reference"]   = payment.reference
-        d["amount"]      = payment.amount
-        d["currency"]    = payment.currency
-        d["paymentData"] = payment.paymentData
+        d["reference"]   = payment.reference as AnyObject?
+        d["amount"]      = payment.amount as AnyObject?
+        d["currency"]    = payment.currency as AnyObject?
+        d["paymentData"] = payment.paymentData as AnyObject?
 
         do {
-            let JSON = try NSJSONSerialization.dataWithJSONObject(d, options: [])
+            let JSON = try JSONSerialization.data(withJSONObject: d, options: [])
             let requestUrlString = "https://merchant-pay.parseapp.com/payment"
-            let request = NSMutableURLRequest(URL: NSURL(string: requestUrlString)!)
-            request.HTTPMethod = "POST"
-            request.HTTPBody = JSON
+            let request = NSMutableURLRequest(url: URL(string: requestUrlString)!)
+            request.httpMethod = "POST"
+            request.httpBody = JSON
             request.setValue("application/json", forHTTPHeaderField: "Accept")
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-            NSURLConnection.sendAsynchronousRequest(request,
-                                                    queue: NSOperationQueue.mainQueue()) {
+            NSURLConnection.sendAsynchronousRequest(request as URLRequest,
+                                                    queue: OperationQueue.main) {
                                                         (resp, data, error) -> Void in
                 do {
-                    let jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: [])
-                    if let psp = jsonResult["pspReference"] as? String {
-                        handler(psp: psp, error)
-                    } else if let message = jsonResult["message"] as? String {
-                        handler(psp: nil,
+                    let jsonResult = try JSONSerialization.jsonObject(with: data!, options: []) as? [String: AnyObject]
+                    if let psp = jsonResult?["pspReference"] as? String {
+                        handler(psp, error as? NSError)
+                    } else if let message = jsonResult?["message"] as? String {
+                        handler(nil,
                                 NSError(domain: "com.Adyen.Checkout",
                                     code: 0,
                                     userInfo: [NSLocalizedDescriptionKey: message]))
                     } else {
-                        handler(psp: nil, error)
+                        handler(nil, error as NSError?)
                     }
                 } catch let error as NSError {
-                    handler(psp: nil, error)
+                    handler(nil, error)
                 }
             }
         } catch let error as NSError {
-            handler(psp: nil, error)
+            handler(nil, error)
         }
     }
 
-    func checkoutViewController(controller: CheckoutViewController,
+    func checkoutViewController(_ controller: CheckoutViewController,
                                 authorizedPayment payment: CheckoutPayment) {
         sendPayment(payment) { (psp, error) -> Void in
-            controller.dismissViewControllerAnimated(true, completion: nil)
+            controller.dismiss(animated: true, completion: nil)
             if error != nil {
                 let alert = UIAlertView(title: "Error",
                                         message: error!.localizedDescription,
@@ -250,9 +246,9 @@ class ViewController: UITableViewController, CheckoutViewControllerDelegate {
 
     }
 
-    func checkoutViewController(controller: CheckoutViewController,
+    func checkoutViewController(_ controller: CheckoutViewController,
                                 failedWithError error: NSError) {
-        controller.dismissViewControllerAnimated(true) { () -> Void in
+        controller.dismiss(animated: true) {
             let alert = UIAlertView(title: "Error",
                                     message: error.localizedDescription,
                                     delegate: nil,

@@ -50,8 +50,17 @@ open class Checkout {
 
         let request = URLRequest(url: URL(string: url)!)
         NSURLConnection.sendAsynchronousRequest(request, queue: OperationQueue.main) { (resp, data, error) -> Void in
+            if let error = error {
+                completion(nil, error as? NSError)
+                return
+            }
+            
+            guard let data = data else {
+                return
+            }
+            
             do {
-                let jsonResult = try JSONSerialization.jsonObject(with: data!, options: [])
+                let jsonResult = try JSONSerialization.jsonObject(with: data, options: [])
                 if let key = (jsonResult as? [String: AnyObject])?["publicKey"] as? String {
                     self.publicKey = key
                     completion(key, nil)

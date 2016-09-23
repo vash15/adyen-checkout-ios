@@ -13,7 +13,7 @@ open class CheckoutHeaderView: UIView {
     open var logoImage: UIImage? // default is nil
     open var titleText: String?
     open var subtitleText: String?
-    open var textColor: UIColor? = UIColor()
+    open var textColor: UIColor?
     
     let imageView = UIImageView()
     open let titleLabel = UILabel()

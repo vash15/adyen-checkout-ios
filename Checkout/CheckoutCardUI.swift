@@ -255,7 +255,13 @@ open class CardPaymentField: CheckoutPaymentFieldView, UITextFieldDelegate {
             
             //            delegate?.fieldChangedValue(self.numberField, valid: valid)
             delegate?.paymentFieldChangedValidity(valid)
-        } else if textField == self.expirationField {
+        } else if textField == self.expirationField
+        {
+            // When Expiry is added properly like this 11/20 and if you press any number then it makes expiry field invalid even nothing displayed on UI
+            if(string.characters.count != 0 && textField.text?.characters.count == 7)
+            {
+                return false;
+            }
             
             let (formatted, valid, _, _) = CardValidation.checkExpirationDate(newString, split: !isDeleating)
             

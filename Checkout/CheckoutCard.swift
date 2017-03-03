@@ -197,6 +197,13 @@ open class CardValidation {
         
         valid = luhnCheck(numberOnly)
         
+        // If card number length is more than 8 and we are still not able to determine its type and treated that card as Unknown but luhncheck algorithm always gives wrong value and treat as valid checksum. Make it forcefully invalid based on this check so field can be highlighted red.
+        
+        if(numberOnly.characters.count >= 8 && type.rawValue == "Unknown" && valid)
+        {
+            valid = false
+        }
+        
         var formatted4 = ""
         for character in numberOnly.characters {
             if formatted4.characters.count == 4 {

@@ -243,15 +243,7 @@ open class CardPaymentField: CheckoutPaymentFieldView, UITextFieldDelegate {
         
         let isDeleating = (string.characters.count == 0 && range.length == 1)
         
-        if textField == self.numberField
-        {
-            // Since all cards in CardType Enum i.e Amex, Visa, MasterCard, Diners, Discover, JCB, Elo, Hipercard, UnionPay are not having numbers more than max length of 19 characters. 19 charachters + 4 spaces = 23 :)
-            
-            if(string.characters.count != 0 && textField.text?.characters.count == 23)
-            {
-                return false;
-            }
-            
+        if textField == self.numberField {
             let (type, formatted, valid) = CardValidation.checkCardNumber(numberOnly)
             
             self.numberField.valid = valid
@@ -281,12 +273,6 @@ open class CardPaymentField: CheckoutPaymentFieldView, UITextFieldDelegate {
             
             self.valid = (self.numberField.valid && self.expirationField.valid && self.cvcField.valid)
             
-            // We have done all validations now make next cvv field first responder
-            if(string.characters.count != 0 && textField.text?.characters.count == 7)
-            {
-                cvcField.becomeFirstResponder()
-            }
-            
             //delegate?.fieldChangedValue(self.expirationField, valid: valid)
             delegate?.paymentFieldChangedValidity(valid)
         }
@@ -299,11 +285,6 @@ open class CardPaymentField: CheckoutPaymentFieldView, UITextFieldDelegate {
                 textField.text = newString
                 
                 self.valid = (self.numberField.valid && self.expirationField.valid && self.cvcField.valid)
-                
-                if(string.characters.count != 0 && textField.text?.characters.count == 4)
-                {
-                     UIApplication.shared.sendAction("resignFirstResponder", to:nil, from:nil, for:nil)
-                }
                 delegate?.paymentFieldChangedValidity(valid)
             }
             

@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "AdyenCheckout"
-  s.version          = "0.0.4"
+  s.version          = "0.0.5"
   s.summary          = "Adyen Checkout is a native library for accepting payments in-app."
   s.description      = "Adyen Checkout is a native library written in Swift for accepting payments in-app."
 

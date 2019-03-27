@@ -233,7 +233,7 @@ open class CheckoutViewController: UIViewController, CheckoutPaymentFieldDelegat
     
     
     
-    func keyboardWillShow(_ notification: Notification) {
+    @objc func keyboardWillShow(_ notification: Notification) {
         guard let userInfo = (notification as NSNotification).userInfo,
             let keyboardRect = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
             let duration = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.floatValue else {
@@ -244,7 +244,7 @@ open class CheckoutViewController: UIViewController, CheckoutPaymentFieldDelegat
         
     }
     
-    func keyboardWillHide(_ notification: Notification) {
+    @objc func keyboardWillHide(_ notification: Notification) {
         guard let userInfo = (notification as NSNotification).userInfo,
             let keyboardRect = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
             let duration = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.floatValue else {
@@ -258,7 +258,7 @@ open class CheckoutViewController: UIViewController, CheckoutPaymentFieldDelegat
         return (backgroundColor.isDark()) ? .lightContent : .default;
     }
     
-    open func dismissMe() {
+    @objc open func dismissMe() {
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -276,7 +276,7 @@ open class CheckoutViewController: UIViewController, CheckoutPaymentFieldDelegat
     }
     
         
-    open func payButtonPressed() {
+    @objc open func payButtonPressed() {
         
     }
     

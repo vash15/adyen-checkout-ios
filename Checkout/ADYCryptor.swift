@@ -69,8 +69,9 @@ open class ADYCryptor {
     
     open class func secureRandomData(_ length: Int) -> Data {
         var keyData = Data(count: length)
+        let count = keyData.count
         let _ = keyData.withUnsafeMutableBytes { mutableBytes in
-            SecRandomCopyBytes(kSecRandomDefault, keyData.count, mutableBytes)
+            SecRandomCopyBytes(kSecRandomDefault, count, mutableBytes)
         }
         
         return keyData
